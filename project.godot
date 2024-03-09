@@ -12,6 +12,8 @@ config_version=5
 
 config/name="Space Romans"
 config/features=PackedStringArray("4.2", "GL Compatibility")
+boot_splash/bg_color=Color(0, 0.156863, 0.215686, 1)
+boot_splash/image="res://splashscreen.png"
 config/icon="res://icon.svg"
 
 [rendering]
