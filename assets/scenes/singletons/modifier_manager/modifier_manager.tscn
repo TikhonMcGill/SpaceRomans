@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://drd10ovuehb8o"]
+
+[ext_resource type="Script" path="res://assets/scenes/singletons/modifier_manager/modifier_manager.gd" id="1_7mt71"]
+
+[node name="ModifierManager" type="Node"]
+script = ExtResource("1_7mt71")
