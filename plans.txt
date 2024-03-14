@@ -1,0 +1,42 @@
+Phase 1 Requirements:
+	Functional Requirements:
+		
+		Functional Requirement 1 – The Game Shall Have a Player:
+			1. The Player can move around using WASD or the Arrow Keys, in a top-down fashion 
+			2. The Player can sprint by holding down SHIFT, which makes them move faster but increases the “Player Noise” 
+			3. The Player can sneak by holding CTRL, which makes noise but makes them much slower
+			4. The Player has a “Player Noise” value, which increases when they sprint, and depends on their equipment and actions 
+		
+		Functional Requirement 2 – The Game shall Have a Simple Starting Level:
+			1. The Level will have a starting point for the player 
+			2. The Level will have an extraction point 
+			3. The Level will have a single enemy 
+			4. The Objective of the Level is to kill the enemy 
+		
+		Functional Requirement 3 – The Game Shall Have Enemies:
+			1. Enemies patrol or wander 
+			2. Enemies have a cone of vision – the Player can move behind them without being detected 
+			3. When Enemies see the Player, they attack 
+		
+		Functional Requirement 4 – The Game is a Procedurally-Generated Roguelike:
+			1. Levels are Generated from pre-made Rooms (“Tiles”) using rules 
+			2. Users choose the level they play, with randomly-generated names and modifiers 
+		
+		Functional Requirement 5 – There are Randomly-Picked Objectives:
+			1. Extraction – go from one location to another location 
+			2. Rescue Hostage – find a hostage, and bring them with you to the extraction (without them dying) 
+			3. Steal Item – take an item before leaving 
+			4. Kill Leader – kill a well-guarded enemy 
+			5. Base self destruct – press self destruct button and then time limit to leave 
+		
+		Functional Requirement 6 – There will be gameplay modifiers:
+			1. Ongoing Battle – Background noise is increased 
+			2. Time Limit – You have a certain amount of time to win the mission, or you’ll lose 
+			3. Instant death for both you and the enemies 
+			4. Non-Lethal run (e.g. “License to kill revoked”) 
+	
+	
+	Non-Functional Requirements 
+			1. Non-Functional Requirement 1 – The Game will take place in a Universe where Romans survived and went into Space 
+				1. The Game will have a futuristic aesthetic and style 
+				2. The enemy will be “Space Romans” 
