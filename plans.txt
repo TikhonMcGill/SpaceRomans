@@ -10,7 +10,7 @@ Phase 1 Requirements:
 			1. Enemies patrol or wander 
 			2. Enemies have a cone of vision – the Player can move behind them without being detected 
 			3. When Enemies see the Player, they attack 
-
+		
 		Functional Requirement 3 – The Game is a Procedurally-Generated Roguelike:
 			1. Levels are Generated from pre-made Rooms (“Tiles”) using rules 
 			2. Users choose the level they play, with randomly-generated names and modifiers 
