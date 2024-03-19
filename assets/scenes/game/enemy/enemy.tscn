@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://cyyvt2c5voxqn"]
+
+[ext_resource type="Script" path="res://assets/scenes/game/enemy/enemy.gd" id="1_1yo45"]
+[ext_resource type="Texture2D" uid="uid://jonppjcr3lh8" path="res://icon.svg" id="1_mpaha"]
+[ext_resource type="PackedScene" uid="uid://d0nlakcyhyls2" path="res://assets/scenes/base_objects/player_seer/player_seer.tscn" id="3_5gqqp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tui7h"]
+size = Vector2(64, 64)
+
+[node name="Enemy" type="CharacterBody2D"]
+script = ExtResource("1_1yo45")
+
+[node name="Icon" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_mpaha")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_tui7h")
+
+[node name="EnemyVision" parent="." instance=ExtResource("3_5gqqp")]

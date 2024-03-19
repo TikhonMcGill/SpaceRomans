@@ -22,8 +22,7 @@ Phase 1 Requirements:
 		
 		Functional Requirement 2 – The Game Shall Have Enemies:
 			1. Enemies patrol or wander 
-			2. Enemies have a cone of vision – the Player can move behind them without being detected 
-			3. When Enemies see the Player, they attack 
+			2. When Enemies see the Player, they attack 
 		
 		Functional Requirement 3 – The Game is a Procedurally-Generated Roguelike:
 			1. Levels are Generated from pre-made Rooms (“Tiles”) using rules 

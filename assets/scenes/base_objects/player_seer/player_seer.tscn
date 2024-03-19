@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=3 uid="uid://d0nlakcyhyls2"]
+
+[ext_resource type="Script" path="res://assets/scenes/base_objects/player_seer/player_seer.gd" id="1_nmys2"]
+
+[node name="PlayerSeer" type="Node2D"]
+script = ExtResource("1_nmys2")
+
+[node name="FieldOfView" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 512
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="FieldOfView"]
+polygon = PackedVector2Array(32, 24, 32, -24, 160, -64, 168, 0, 160, 64)
+
+[node name="PlayerCast" type="RayCast2D" parent="."]
+position = Vector2(32, 0)
+enabled = false
+target_position = Vector2(136, 0)
+collision_mask = 512
+
+[connection signal="body_entered" from="FieldOfView" to="." method="_on_field_of_view_body_entered"]
+[connection signal="body_exited" from="FieldOfView" to="." method="_on_field_of_view_body_exited"]
