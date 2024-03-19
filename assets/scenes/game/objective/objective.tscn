@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://ci5cxjnrfqkoo"]
+
+[ext_resource type="Script" path="res://assets/scenes/game/objective/objective.gd" id="1_iv718"]
+
+[node name="Objective" type="Node"]
+script = ExtResource("1_iv718")
