@@ -61,6 +61,7 @@ sneak={
 
 [layer_names]
 
+2d_physics/layer_1="Noise"
 2d_physics/layer_10="Player"
 
 [rendering]

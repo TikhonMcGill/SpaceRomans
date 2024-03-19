@@ -1,14 +1,18 @@
-[gd_scene load_steps=5 format=3 uid="uid://cyyvt2c5voxqn"]
+[gd_scene load_steps=7 format=3 uid="uid://cyyvt2c5voxqn"]
 
 [ext_resource type="Script" path="res://assets/scenes/game/enemy/enemy.gd" id="1_1yo45"]
 [ext_resource type="Texture2D" uid="uid://jonppjcr3lh8" path="res://icon.svg" id="1_mpaha"]
+[ext_resource type="PackedScene" uid="uid://dspwxtfnuecfr" path="res://assets/scenes/game/enemy/enemy_state_machine/enemy_state_machine.tscn" id="2_yae52"]
 [ext_resource type="PackedScene" uid="uid://d0nlakcyhyls2" path="res://assets/scenes/base_objects/player_seer/player_seer.tscn" id="3_5gqqp"]
+[ext_resource type="PackedScene" uid="uid://dksdsjk2rcc6h" path="res://assets/scenes/base_objects/player_hearer/player_hearer.tscn" id="4_2iv1g"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tui7h"]
 size = Vector2(64, 64)
 
 [node name="Enemy" type="CharacterBody2D"]
 script = ExtResource("1_1yo45")
+
+[node name="EnemyStateMachine" parent="." instance=ExtResource("2_yae52")]
 
 [node name="Icon" type="Sprite2D" parent="."]
 scale = Vector2(0.5, 0.5)
@@ -18,3 +22,8 @@ texture = ExtResource("1_mpaha")
 shape = SubResource("RectangleShape2D_tui7h")
 
 [node name="EnemyVision" parent="." instance=ExtResource("3_5gqqp")]
+
+[node name="EnemyHearing" parent="." instance=ExtResource("4_2iv1g")]
+sensitivity = 128
+
+[connection signal="noise_heard" from="EnemyHearing" to="." method="_on_enemy_hearing_noise_heard"]

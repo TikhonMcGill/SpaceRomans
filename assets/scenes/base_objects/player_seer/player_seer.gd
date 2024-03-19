@@ -16,7 +16,7 @@ func _process(delta: float) -> void:
 	#If there is a player visible, we handle the Raycast pointing at the player
 	if player_in_cone:
 		player_cast.enabled = true
-		player_cast.rotation = player_cast.global_position.angle_to_point(player_in_cone.global_position)
+		player_cast.global_rotation = player_cast.global_position.angle_to_point(player_in_cone.global_position)
 		player_cast.force_raycast_update()
 		
 		var is_detected = player_cast.is_colliding()

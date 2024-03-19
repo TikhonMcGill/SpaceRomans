@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://m40gykhoarq8"]
+
+[ext_resource type="Script" path="res://assets/scenes/game/enemy/enemy_state_machine/patrolling_state/patrolling_state.gd" id="1_3rmg6"]
+
+[node name="PatrollingState" type="Node"]
+script = ExtResource("1_3rmg6")
