@@ -35,6 +35,11 @@ func to_searching_state() -> void:
 func to_patrolling_state() -> void:
 	current_state = patrolling_state
 
+func to_combat_state() -> void:
+	print("TO COMBAT STATE!")
+	current_state = combat_state
+	combat_state.shoot_timer.start()
+
 func _hear_player(hearing_position: Vector2) -> void:
 	searching_state.search_position = hearing_position
 	if current_state == patrolling_state:
@@ -42,3 +47,15 @@ func _hear_player(hearing_position: Vector2) -> void:
 
 func _on_searching_state_search_completed() -> void:
 	to_patrolling_state()
+
+func _on_enemy_vision_player_seen(player: Player) -> void:
+	if current_state != combat_state:
+		combat_state.target = player
+		to_combat_state()
+
+func _on_enemy_vision_player_unseen(last_position: Vector2) -> void:
+	if current_state == combat_state:
+		combat_state.target = null
+		combat_state.shoot_timer.stop()
+		searching_state.search_position = last_position
+		to_searching_state()

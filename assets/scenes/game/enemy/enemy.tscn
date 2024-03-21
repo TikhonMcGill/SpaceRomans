@@ -26,4 +26,6 @@ shape = SubResource("RectangleShape2D_tui7h")
 [node name="EnemyHearing" parent="." instance=ExtResource("4_2iv1g")]
 sensitivity = 128
 
+[connection signal="player_seen" from="EnemyVision" to="EnemyStateMachine" method="_on_enemy_vision_player_seen"]
+[connection signal="player_unseen" from="EnemyVision" to="EnemyStateMachine" method="_on_enemy_vision_player_unseen"]
 [connection signal="noise_heard" from="EnemyHearing" to="EnemyStateMachine" method="_hear_player"]

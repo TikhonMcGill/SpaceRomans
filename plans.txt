@@ -1,9 +1,3 @@
-How I (Tikhon) assume the Enemy will work:
-	1. Enemies have Three States:
-		1. Combat - they're actively fighting the Player
-	2. Enemies have a Cone of Vision, and, if they see the player in it,
-	they'll enter the "Combat" State
-
 Phase 1 Requirements:
 	Functional Requirements:
 		Functional Requirement 1 – The Game shall Have a Simple Starting Level:

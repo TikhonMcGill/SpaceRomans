@@ -7,6 +7,7 @@ class_name Enemy
 ##Enemies have a Cone of Vision, and if they see the player in it, they'll attack
 
 @export var enemy_speed : int = 200
+@export var enemy_damage : int = 50
 
 @export var patrol_points : Array[PatrolPoint] = []
 @export var back_and_forth_patrol : bool = false
@@ -28,3 +29,6 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	if velocity.length_squared() > 0.05:
 		enemy_vision.rotation = lerp_angle(enemy_vision.rotation,velocity.angle(),0.04)
+
+func look_at_point(pos : Vector2) -> void:
+	enemy_vision.rotation = lerp_angle(enemy_vision.rotation,enemy_vision.global_position.angle_to_point(pos),0.1)

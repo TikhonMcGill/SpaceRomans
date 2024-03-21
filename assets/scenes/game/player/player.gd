@@ -10,6 +10,8 @@ class_name Player #Using "class_name" means other scripts will be able to see th
 ##
 ##The User controls the player, moving around using WASD, Sprinting using Shift, Sneaking using CTRL
 
+signal game_over ##Emitted when the Player's health reaches 0 (or when they fail the objective, but that's TODO)
+
 #@export means that the Variable can be edited in the inspector
 
 @export var base_speed : int = 200 ##The Base Speed of the Player, when they're not Sprinting or sneaking
@@ -17,6 +19,13 @@ class_name Player #Using "class_name" means other scripts will be able to see th
 @export var sneak_speed : int = 50 ##The Speed of the Player when they're sneaking using CTRL
 
 @onready var player_noise_circle : CircleShape2D = $PlayerNoise/CollisionShape2D.shape
+
+var player_health : int = 100 ##The Health of the Player
+
+func _process(delta: float) -> void:
+	if player_health <= 0:
+		print("GAME OVER!!!")
+		game_over.emit()
 
 #Physics Process is run every Physics frame,
 #so it's good to do movement etc. in it (to prevent Bethesda-like Physics being dependent on Framerate)
