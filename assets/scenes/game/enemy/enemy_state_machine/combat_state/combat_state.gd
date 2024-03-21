@@ -2,5 +2,5 @@ extends EnemyState
 
 class_name CombatState
 
-func do_state() -> void:
+func do_state(delta : float) -> void:
 	pass

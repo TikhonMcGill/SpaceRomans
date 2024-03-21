@@ -21,7 +21,7 @@ func _ready() -> void:
 	current_state = patrolling_state
 
 func _physics_process(delta: float) -> void:
-	current_state.do_state()
+	current_state.do_state(delta)
 
 func set_my_enemy_body(body : Enemy) -> void:
 	my_body = body

@@ -1,10 +1,6 @@
 How I (Tikhon) assume the Enemy will work:
 	1. Enemies have Three States:
-		1. Patrolling - they move around preset patrol points
-		2. Combat - they're actively fighting the Player
-		3. Searching - they move around first to where they last saw
-		the player, then randomly, until a certain amount of time passes,
-		after which they return to Patrolling
+		1. Combat - they're actively fighting the Player
 	2. Enemies have a Cone of Vision, and, if they see the player in it,
 	they'll enter the "Combat" State
 

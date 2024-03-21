@@ -16,12 +16,8 @@ func _can_search() -> bool:
 func _get_direction_to_search() -> float:
 	return my_body.global_position.angle_to_point(search_position)
 
-func do_state() -> void:
+func do_state(delta : float) -> void:
 	if _can_search() == true:
-		var desired_angle := _get_direction_to_search()
-		if enemy_vision.rotation != desired_angle:
-			enemy_vision.rotation = lerp_angle(enemy_vision.rotation,desired_angle,0.04)
-		
 		if my_body.global_position.distance_to(search_position) <= 8 and wait_timer.time_left == 0:
 			wait_timer.start()
 			return
@@ -33,4 +29,5 @@ func do_state() -> void:
 			my_body.move_and_slide()
 
 func _on_wait_timer_timeout() -> void:
+	my_body.velocity = Vector2.ZERO
 	search_completed.emit()

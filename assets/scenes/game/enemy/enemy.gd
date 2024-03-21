@@ -8,10 +8,23 @@ class_name Enemy
 
 @export var enemy_speed : int = 200
 
+@export var patrol_points : Array[PatrolPoint] = []
+@export var back_and_forth_patrol : bool = false
+
 @onready var state_machine: EnemyStateMachine = $EnemyStateMachine
+
+@onready var enemy_vision: PlayerSeer = $EnemyVision
 
 var last_player_position : Vector2 = -Vector2.ONE ##The last position the player was, according to the enemy
 
 func _ready() -> void:
 	state_machine.set_my_enemy_body(self)
+	
 	state_machine.searching_state.enemy_vision = $EnemyVision
+	
+	state_machine.patrolling_state.patrol_points = patrol_points
+	state_machine.patrolling_state.back_and_forth = back_and_forth_patrol
+
+func _physics_process(delta: float) -> void:
+	if velocity.length_squared() > 0.05:
+		enemy_vision.rotation = lerp_angle(enemy_vision.rotation,velocity.angle(),0.04)
