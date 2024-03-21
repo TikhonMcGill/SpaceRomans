@@ -13,3 +13,5 @@ script = ExtResource("1_uy0uy")
 [node name="CombatState" parent="." instance=ExtResource("3_vmxli")]
 
 [node name="SearchingState" parent="." instance=ExtResource("4_th5x3")]
+
+[connection signal="search_completed" from="SearchingState" to="." method="_on_searching_state_search_completed"]

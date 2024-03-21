@@ -29,6 +29,16 @@ func set_my_enemy_body(body : Enemy) -> void:
 	combat_state.my_body = body
 	searching_state.my_body = body
 
-func to_searching_state(searching_position : Vector2) -> void:
+func to_searching_state() -> void:
 	current_state = searching_state
-	current_state.last_player_position = searching_position
+
+func to_patrolling_state() -> void:
+	current_state = patrolling_state
+
+func _hear_player(hearing_position: Vector2) -> void:
+	searching_state.search_position = hearing_position
+	if current_state == patrolling_state:
+		to_searching_state()
+
+func _on_searching_state_search_completed() -> void:
+	to_patrolling_state()
