@@ -18,7 +18,7 @@ signal game_over ##Emitted when the Player's health reaches 0 (or when they fail
 @export var sprint_speed : int = 400 ##The Speed of the Player when they're sprinting using SHIFT
 @export var sneak_speed : int = 50 ##The Speed of the Player when they're sneaking using CTRL
 
-@export var shoot_range : int = 256 ##The Maximum Range the Player can shoot
+@export var shoot_range : int = 128 ##The Maximum Range the Player can shoot
 @export var shoot_damage : int = 10 ##The Damage the Player does when Shooting
 
 @onready var player_noise: NoiseMaker = $PlayerNoise
@@ -63,6 +63,18 @@ func _handle_neck_snap() -> void:
 func _handle_shooting() -> void:
 	shoot_cast.target_position = get_global_mouse_position() - shoot_cast.global_position
 	shoot_cast.target_position = shoot_cast.target_position.limit_length(shoot_range)
+	
+	var starting_noise_radius := player_noise.noise_radius
+	var starting_player_noise := GameManager.player_noise
+	
+	var tween := get_tree().create_tween()
+	var tween_2 := get_tree().create_tween()
+	
+	tween.tween_property(player_noise.noise_circle,"radius",128,0.1)
+	tween.tween_property(player_noise.noise_circle,"radius",starting_noise_radius,0.1)
+	
+	tween_2.tween_property(GameManager,"player_noise",10,0.1)
+	tween_2.tween_property(GameManager,"player_noise",starting_player_noise,0.1)
 	
 	shoot_cast.force_raycast_update()
 	

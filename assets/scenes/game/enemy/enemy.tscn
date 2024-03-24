@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dksdsjk2rcc6h" path="res://assets/scenes/base_objects/player_hearer/player_hearer.tscn" id="4_2iv1g"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tui7h"]
-size = Vector2(64, 64)
+size = Vector2(32, 32)
 
 [node name="Enemy" type="CharacterBody2D"]
 collision_layer = 1026
@@ -17,7 +17,7 @@ script = ExtResource("1_1yo45")
 [node name="EnemyStateMachine" parent="." instance=ExtResource("2_yae52")]
 
 [node name="Icon" type="Sprite2D" parent="."]
-scale = Vector2(0.5, 0.5)
+scale = Vector2(0.25, 0.25)
 texture = ExtResource("1_mpaha")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

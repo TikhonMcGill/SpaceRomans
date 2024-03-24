@@ -6,9 +6,6 @@ Phase 1 Requirements:
 			3. The Level will have a single enemy 
 			4. The Objective of the Level is to kill the enemy 
 		
-		Functional Requirement 2 – The Game Shall Have Enemies:
-			1. When Enemies see the Player, they attack 
-		
 		Functional Requirement 3 – The Game is a Procedurally-Generated Roguelike:
 			1. Levels are Generated from pre-made Rooms (“Tiles”) using rules 
 			2. Users choose the level they play, with randomly-generated names and modifiers 
