@@ -10,6 +10,8 @@
 size = Vector2(64, 64)
 
 [node name="Enemy" type="CharacterBody2D"]
+collision_layer = 1026
+collision_mask = 2
 script = ExtResource("1_1yo45")
 
 [node name="EnemyStateMachine" parent="." instance=ExtResource("2_yae52")]

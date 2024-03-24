@@ -8,6 +8,7 @@ class_name Enemy
 
 @export var enemy_speed : int = 200
 @export var enemy_damage : int = 50
+@export var enemy_health : int = 100
 
 @export var patrol_points : Array[PatrolPoint] = []
 @export var back_and_forth_patrol : bool = false
@@ -17,6 +18,10 @@ class_name Enemy
 @onready var enemy_vision: PlayerSeer = $EnemyVision
 
 var last_player_position : Vector2 = -Vector2.ONE ##The last position the player was, according to the enemy
+
+func _process(delta: float) -> void:
+	if enemy_health <= 0:
+		queue_free()
 
 func _ready() -> void:
 	state_machine.set_my_enemy_body(self)

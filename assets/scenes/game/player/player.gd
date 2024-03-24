@@ -18,7 +18,9 @@ signal game_over ##Emitted when the Player's health reaches 0 (or when they fail
 @export var sprint_speed : int = 400 ##The Speed of the Player when they're sprinting using SHIFT
 @export var sneak_speed : int = 50 ##The Speed of the Player when they're sneaking using CTRL
 
-@onready var player_noise_circle : CircleShape2D = $PlayerNoise/CollisionShape2D.shape
+@onready var player_noise: NoiseMaker = $PlayerNoise
+
+@onready var player_snapping: Area2D = $PlayerSnapping
 
 var player_health : int = 100 ##The Health of the Player
 
@@ -26,6 +28,14 @@ func _process(delta: float) -> void:
 	if player_health <= 0:
 		print("GAME OVER!!!")
 		game_over.emit()
+	
+	if Input.is_action_pressed("neck_snap") == true:
+		var possible_enemies := player_snapping.get_overlapping_bodies()
+		if len(possible_enemies) > 0:
+			var enemy : Enemy = possible_enemies[0]
+			
+			if enemy.state_machine.current_state != enemy.state_machine.combat_state:
+				enemy.enemy_health = 0
 
 #Physics Process is run every Physics frame,
 #so it's good to do movement etc. in it (to prevent Bethesda-like Physics being dependent on Framerate)
@@ -77,16 +87,16 @@ func _handle_noise() -> void:
 	#If the Player is not moving (i.e. velocity is 0), Player Noise is 0
 	if velocity.length() == 0:
 		GameManager.player_noise = 0
-		player_noise_circle.radius = 0
+		player_noise.noise_radius = 0
 	#If the Player's speed is Sneak Speed (i.e. they're sneaking), Player Noise is 0
 	elif velocity.length() == sneak_speed:
 		GameManager.player_noise = 0
-		player_noise_circle.radius = 0
+		player_noise.noise_radius = 0
 	#If the Player's speed is Sprint Speed (i.e. they're sprinting), Player Noise is 2
 	elif velocity.length() == sprint_speed:
 		GameManager.player_noise = 2
-		player_noise_circle.radius = 48
+		player_noise.noise_radius = 48
 	#Otherwise, Player noise is 1
 	else:
-		player_noise_circle.radius = 32
+		player_noise.noise_radius = 32
 		GameManager.player_noise = 1

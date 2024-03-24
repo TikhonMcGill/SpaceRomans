@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://c01hct8lwvtd4"]
+[gd_scene load_steps=6 format=3 uid="uid://c01hct8lwvtd4"]
 
 [ext_resource type="Texture2D" uid="uid://jonppjcr3lh8" path="res://icon.svg" id="1_4yd83"]
 [ext_resource type="Script" path="res://assets/scenes/game/player/player.gd" id="1_wpdis"]
@@ -7,8 +7,12 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kn8lu"]
 size = Vector2(64, 64)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s8xu6"]
+size = Vector2(96, 96)
+
 [node name="Player" type="CharacterBody2D"]
-collision_layer = 513
+collision_layer = 514
+collision_mask = 2
 script = ExtResource("1_wpdis")
 
 [node name="Icon" type="Sprite2D" parent="."]
@@ -19,3 +23,11 @@ texture = ExtResource("1_4yd83")
 shape = SubResource("RectangleShape2D_kn8lu")
 
 [node name="PlayerNoise" parent="." instance=ExtResource("3_pff3a")]
+
+[node name="PlayerSnapping" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 1024
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerSnapping"]
+shape = SubResource("RectangleShape2D_s8xu6")

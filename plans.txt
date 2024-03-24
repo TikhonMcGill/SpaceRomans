@@ -7,8 +7,7 @@ Phase 1 Requirements:
 			4. The Objective of the Level is to kill the enemy 
 		
 		Functional Requirement 2 – The Game Shall Have Enemies:
-			1. Enemies patrol or wander 
-			2. When Enemies see the Player, they attack 
+			1. When Enemies see the Player, they attack 
 		
 		Functional Requirement 3 – The Game is a Procedurally-Generated Roguelike:
 			1. Levels are Generated from pre-made Rooms (“Tiles”) using rules 
@@ -31,3 +30,9 @@ Phase 1 Requirements:
 			1. Non-Functional Requirement 1 – The Game will take place in a Universe where Romans survived and went into Space 
 				1. The Game will have a futuristic aesthetic and style 
 				2. The enemy will be “Space Romans” 
+
+Controls:
+	1. Move: WASD/Arrow Keys
+	2. Sprint: Shift
+	3. Sneak: CTRL
+	4. Snap Enemy's Neck (only if they can't see you): F
