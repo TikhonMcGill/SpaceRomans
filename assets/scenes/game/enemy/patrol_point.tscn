@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://b4dvgx82pnf1b"]
+
+[ext_resource type="Texture2D" uid="uid://jonppjcr3lh8" path="res://icon.svg" id="1_a4cdx"]
+[ext_resource type="Script" path="res://assets/scenes/game/enemy/patrol_point.gd" id="1_qxifl"]
+
+[node name="PatrolPoint" type="Node2D"]
+script = ExtResource("1_qxifl")
+
+[node name="Icon" type="Sprite2D" parent="."]
+modulate = Color(1, 0, 0, 1)
+scale = Vector2(0.1875, 0.1875)
+texture = ExtResource("1_a4cdx")
