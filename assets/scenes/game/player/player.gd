@@ -18,9 +18,14 @@ signal game_over ##Emitted when the Player's health reaches 0 (or when they fail
 @export var sprint_speed : int = 400 ##The Speed of the Player when they're sprinting using SHIFT
 @export var sneak_speed : int = 50 ##The Speed of the Player when they're sneaking using CTRL
 
+@export var shoot_range : int = 256 ##The Maximum Range the Player can shoot
+@export var shoot_damage : int = 10 ##The Damage the Player does when Shooting
+
 @onready var player_noise: NoiseMaker = $PlayerNoise
 
 @onready var player_snapping: Area2D = $PlayerSnapping
+
+@onready var shoot_cast: RayCast2D = $ShootCast
 
 var player_health : int = 100 ##The Health of the Player
 
@@ -29,13 +34,7 @@ func _process(delta: float) -> void:
 		print("GAME OVER!!!")
 		game_over.emit()
 	
-	if Input.is_action_pressed("neck_snap") == true:
-		var possible_enemies := player_snapping.get_overlapping_bodies()
-		if len(possible_enemies) > 0:
-			var enemy : Enemy = possible_enemies[0]
-			
-			if enemy.state_machine.current_state != enemy.state_machine.combat_state:
-				enemy.enemy_health = 0
+	_handle_combat()
 
 #Physics Process is run every Physics frame,
 #so it's good to do movement etc. in it (to prevent Bethesda-like Physics being dependent on Framerate)
@@ -44,6 +43,35 @@ func _physics_process(delta: float) -> void:
 	_handle_noise()
 	move_and_slide() #Move and Slide is a built in method of CharacterBody2D, and is good because characters gracefully slide against e.g. slopes, instead of just getting stopped
 
+##A Function to handle player Combat
+func _handle_combat() -> void:
+	if Input.is_action_just_pressed("neck_snap") == true:
+		_handle_neck_snap()
+	elif Input.is_action_just_pressed("shoot") == true:
+		_handle_shooting()
+
+##A Function to Handle the Player stealthily killing an enemy using a Neck Snap
+func _handle_neck_snap() -> void:
+	var possible_enemies := player_snapping.get_overlapping_bodies()
+	if len(possible_enemies) > 0:
+		var enemy : Enemy = possible_enemies[0]
+		
+		if enemy.state_machine.current_state != enemy.state_machine.combat_state:
+			enemy.enemy_health = 0
+
+##A Function to Handle the Player Shooting using Left Click
+func _handle_shooting() -> void:
+	shoot_cast.target_position = get_global_mouse_position() - shoot_cast.global_position
+	shoot_cast.target_position = shoot_cast.target_position.limit_length(shoot_range)
+	
+	shoot_cast.force_raycast_update()
+	
+	var victim : Enemy = shoot_cast.get_collider()
+	if victim != null:
+		victim.enemy_health -= shoot_damage
+		victim.state_machine.combat_state.target = self
+		victim.state_machine.to_combat_state()
+	
 #In Godot, starting a function with an underline is mostly a convenient way of establishing
 #private methods - methods starting with an underline aren't shown in external classes (unless explicitly searched for)
 #which is useful to prevent clutter

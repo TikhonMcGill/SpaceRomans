@@ -55,7 +55,6 @@ func _on_enemy_vision_player_seen(player: Player) -> void:
 
 func _on_enemy_vision_player_unseen(last_position: Vector2) -> void:
 	if current_state == combat_state:
-		combat_state.target = null
-		combat_state.shoot_timer.stop()
+		combat_state._lose_target()
 		searching_state.search_position = last_position
 		to_searching_state()

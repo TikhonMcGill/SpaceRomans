@@ -31,3 +31,7 @@ monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerSnapping"]
 shape = SubResource("RectangleShape2D_s8xu6")
+
+[node name="ShootCast" type="RayCast2D" parent="."]
+enabled = false
+collision_mask = 1024
