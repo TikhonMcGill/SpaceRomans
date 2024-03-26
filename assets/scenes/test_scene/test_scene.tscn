@@ -10,4 +10,3 @@ position = Vector2(304, 168)
 
 [node name="Enemy" parent="." instance=ExtResource("2_hrhxx")]
 position = Vector2(736, 352)
-back_and_forth_patrol = true
