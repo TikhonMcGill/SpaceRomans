@@ -1,17 +1,3 @@
-How I (Tikhon) assume the Enemy will work:
-	1. Enemies have Three States:
-		1. Patrolling - they move around preset patrol points
-		2. Combat - they're actively fighting the Player
-		3. Searching - they move around first to where they last saw
-		the player, then randomly, until a certain amount of time passes,
-		after which they return to Patrolling
-	2. Enemies have a Cone of Vision, and, if they see the player in it,
-	they'll enter the "Combat" State
-	3. Enemies are receptive to the noise the player makes - if
-	player noise > background noise (and they're within the radius of the noise),
-	enemies will switch to the Searching State, moving to the player's last
-	position
-
 Phase 1 Requirements:
 	Functional Requirements:
 		Functional Requirement 1 – The Game shall Have a Simple Starting Level:
@@ -20,27 +6,18 @@ Phase 1 Requirements:
 			3. The Level will have a single enemy 
 			4. The Objective of the Level is to kill the enemy 
 		
-		Functional Requirement 2 – The Game Shall Have Enemies:
-			1. Enemies patrol or wander 
-			2. Enemies have a cone of vision – the Player can move behind them without being detected 
-			3. When Enemies see the Player, they attack 
-		
 		Functional Requirement 3 – The Game is a Procedurally-Generated Roguelike:
 			1. Levels are Generated from pre-made Rooms (“Tiles”) using rules 
 			2. Users choose the level they play, with randomly-generated names and modifiers 
 		
-		Functional Requirement 4 – The Game is a Procedurally-Generated Roguelike:
-			1. Levels are Generated from pre-made Rooms (“Tiles”) using rules 
-			2. Users choose the level they play, with randomly-generated names and modifiers 
-		
-		Functional Requirement 5 – There are Randomly-Picked Objectives:
+		Functional Requirement 4 – There are Randomly-Picked Objectives:
 			1. Extraction – go from one location to another location 
 			2. Rescue Hostage – find a hostage, and bring them with you to the extraction (without them dying) 
 			3. Steal Item – take an item before leaving 
 			4. Kill Leader – kill a well-guarded enemy 
 			5. Base self destruct – press self destruct button and then time limit to leave 
 
-		Functional Requirement 6 – There will be gameplay modifiers:
+		Functional Requirement 5 – There will be gameplay modifiers:
 			1. Ongoing Battle – Background noise is increased 
 			2. Time Limit – You have a certain amount of time to win the mission, or you’ll lose 
 			3. Instant death for both you and the enemies 
@@ -50,3 +27,9 @@ Phase 1 Requirements:
 			1. Non-Functional Requirement 1 – The Game will take place in a Universe where Romans survived and went into Space 
 				1. The Game will have a futuristic aesthetic and style 
 				2. The enemy will be “Space Romans” 
+
+Controls:
+	1. Move: WASD/Arrow Keys
+	2. Sprint: Shift
+	3. Sneak: CTRL
+	4. Snap Enemy's Neck (only if they can't see you): F

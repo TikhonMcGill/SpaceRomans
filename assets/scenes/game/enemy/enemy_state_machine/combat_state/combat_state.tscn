@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://c1tvdgss6shb0"]
+
+[ext_resource type="Script" path="res://assets/scenes/game/enemy/enemy_state_machine/combat_state/combat_state.gd" id="1_nhj3o"]
+
+[node name="CombatState" type="Node"]
+script = ExtResource("1_nhj3o")
+
+[node name="ShootTimer" type="Timer" parent="."]
+
+[node name="ShootCast" type="RayCast2D" parent="."]
+modulate = Color(1, 0, 1, 1)
+enabled = false
+collision_mask = 512
+
+[connection signal="timeout" from="ShootTimer" to="." method="_on_shoot_timer_timeout"]
