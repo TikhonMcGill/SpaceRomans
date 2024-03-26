@@ -8,5 +8,5 @@ var modifier_description: String ##The description of the gameplay modifier (eff
 
 ## Class constructor
 func _init(modifier_name: String, modifier_description: String):
-		self.modifier_name = modifier_name
-		self.modifier_description = modifier_description
+	self.modifier_name = modifier_name
+	self.modifier_description = modifier_description
