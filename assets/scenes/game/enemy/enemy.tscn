@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dksdsjk2rcc6h" path="res://assets/scenes/base_objects/player_hearer/player_hearer.tscn" id="4_2iv1g"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tui7h"]
-size = Vector2(32, 32)
+size = Vector2(31, 31)
 
 [node name="Enemy" type="CharacterBody2D"]
 collision_layer = 1026

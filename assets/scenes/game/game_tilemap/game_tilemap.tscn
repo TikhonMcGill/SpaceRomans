@@ -1,0 +1,124 @@
+[gd_scene load_steps=24 format=3 uid="uid://bpccva2qkbr77"]
+
+[ext_resource type="Texture2D" uid="uid://c3u583cmjso56" path="res://assets/scenes/game/game_tilemap/floor_mosaic_1.png" id="1_xkx5u"]
+[ext_resource type="Texture2D" uid="uid://cg2p1jwfhb3yn" path="res://assets/scenes/game/game_tilemap/floor_mosaic_1_invert.png" id="2_7y0ho"]
+[ext_resource type="Texture2D" uid="uid://cbeb6bljh2461" path="res://assets/scenes/game/game_tilemap/floor_mosaic_2.png" id="3_ggmci"]
+[ext_resource type="Texture2D" uid="uid://cr2o4wlyr6h68" path="res://assets/scenes/game/game_tilemap/floor_mosaic_edge_top.png" id="3_sw04o"]
+[ext_resource type="Texture2D" uid="uid://dleo6dk5npjpk" path="res://assets/scenes/game/game_tilemap/floor_mosaic_edge_bottom.png" id="4_olapd"]
+[ext_resource type="Texture2D" uid="uid://dproq7ywcnsis" path="res://assets/scenes/game/game_tilemap/floor_mosaic_edge_left.png" id="5_tj1yf"]
+[ext_resource type="Texture2D" uid="uid://3xb36ky2hm56" path="res://assets/scenes/game/game_tilemap/floor_mosaic_edge_right.png" id="6_5daj7"]
+[ext_resource type="Texture2D" uid="uid://bv1jsyb23brv1" path="res://assets/scenes/game/game_tilemap/mosaic_corner.png" id="7_74e4a"]
+[ext_resource type="Texture2D" uid="uid://c6iadfvrabhmg" path="res://assets/scenes/game/game_tilemap/ragged_wall.png" id="8_iyctr"]
+[ext_resource type="Texture2D" uid="uid://d1pufsukjw28s" path="res://assets/scenes/game/game_tilemap/wall.png" id="9_bdyum"]
+[ext_resource type="Texture2D" uid="uid://cnnxfbuj0xn1t" path="res://assets/scenes/game/game_tilemap/granite_floor.png" id="10_a33ew"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dpefo"]
+resource_name = "Floor Mosaic 1"
+texture = ExtResource("1_xkx5u")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jhhxb"]
+resource_name = "Floor Mosaic 1 Inverted"
+texture = ExtResource("2_7y0ho")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ubmx0"]
+resource_name = "Mosaic Floor Top"
+texture = ExtResource("3_sw04o")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_m6bid"]
+resource_name = "Floor Mosaic 2"
+texture = ExtResource("3_ggmci")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8p5ih"]
+resource_name = "Floor Mosaic Bottom Edge"
+texture = ExtResource("4_olapd")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ij7ap"]
+resource_name = "Floor Mosaic Left Edge"
+texture = ExtResource("5_tj1yf")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8xos0"]
+resource_name = "Floor Mosaic Right Edge"
+texture = ExtResource("6_5daj7")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gp5sa"]
+resource_name = "Mosaic Corner"
+texture = ExtResource("7_74e4a")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tn2mh"]
+resource_name = "Ragged Wall"
+texture = ExtResource("8_iyctr")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_63ghr"]
+resource_name = "Wall"
+texture = ExtResource("9_bdyum")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_godi7"]
+resource_name = "Granite Floor"
+texture = ExtResource("10_a33ew")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+
+[sub_resource type="TileSet" id="TileSet_81ro3"]
+tile_size = Vector2i(32, 32)
+physics_layer_0/collision_layer = 2
+physics_layer_0/collision_mask = 2
+sources/0 = SubResource("TileSetAtlasSource_dpefo")
+sources/1 = SubResource("TileSetAtlasSource_jhhxb")
+sources/2 = SubResource("TileSetAtlasSource_m6bid")
+sources/3 = SubResource("TileSetAtlasSource_8p5ih")
+sources/4 = SubResource("TileSetAtlasSource_ij7ap")
+sources/5 = SubResource("TileSetAtlasSource_8xos0")
+sources/6 = SubResource("TileSetAtlasSource_gp5sa")
+sources/7 = SubResource("TileSetAtlasSource_tn2mh")
+sources/8 = SubResource("TileSetAtlasSource_63ghr")
+sources/9 = SubResource("TileSetAtlasSource_godi7")
+sources/10 = SubResource("TileSetAtlasSource_ubmx0")
+
+[node name="GameTilemap" type="TileMap"]
+z_index = -5
+tile_set = SubResource("TileSet_81ro3")
+format = 2
