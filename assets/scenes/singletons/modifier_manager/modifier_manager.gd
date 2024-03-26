@@ -1,16 +1,5 @@
 extends Node
 
-## Inner Class for Randomly-Selected Gameplay modifiers
-class Modifier:  
-
-	var modifier_name: String ##The name of the gameplay modifier
-	var modifier_description: String ##The description of the gameplay modifier (effect(s))
-
-## Class constructor
-	func _init(modifier_name: String, modifier_description: String):
-		self.modifier_name = modifier_name
-		self.modifier_description = modifier_description
-
 ##Variable to hold the list of gameplay modifiers
 var gameplay_modifiers = [
 	Modifier.new("Anger", "Enemies deal 100 Damage per shot."),
@@ -19,8 +8,7 @@ var gameplay_modifiers = [
 
 ##Method to select a random gameplay modifier
 func _select_random_gameplay_modifier() -> Modifier:
-	var randomizer = randi() % gameplay_modifiers.size() ##Select and store a random index within the range of the gameplay_modifiers array
-	return gameplay_modifiers[randomizer] ##Return the randomly selected gameplay_modifier
+	return gameplay_modifiers.pick_random() ##Return the randomly selected gameplay_modifier
 
 ##Method to activate the selected gameplay modifier
 func _activate_gameplay_modifier(gameplay_modifier: Modifier):
