@@ -14,6 +14,10 @@ func _select_random_gameplay_modifier() -> Modifier:
 func _activate_gameplay_modifier(gameplay_modifier: Modifier):
 	print("Activating gameplay modifier: ", gameplay_modifier.modifier_name) ##Used for eventual debugging/tracking
 	##TODO Add code to apply the effect of the gameplay modifier in game
+	
+	##Test for Anger gameplay modifier effect
+	if gameplay_modifier.modifier_name == "Anger":
+		Enemy._set_enemy_damage(100) 
 
 ##Method to apply the gameplay modifier at runtime in-game
 func _ready():
