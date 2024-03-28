@@ -10,12 +10,18 @@ signal player_unseen(last_position : Vector2) ##Emitted when the Player is no lo
 @onready var field_of_view: Area2D = $FieldOfView
 @onready var player_cast: RayCast2D = $PlayerCast
 
+@onready var seer_graphic: Polygon2D = $SeerGraphic
+
 var player_in_cone : Player = null ##The Player (if any) the Player Seer sees in the cone of vision
 var player_detected : bool = false ##Whether or not the player has been detected
 
 func can_see_player() -> bool:
 	return player_in_cone != null
 
+func _ready() -> void:
+	var collision_polygon : CollisionPolygon2D = field_of_view.get_node("CollisionPolygon2D")
+	seer_graphic.polygon = collision_polygon.polygon
+	
 func _process(delta: float) -> void:
 	#If there is a player visible, we handle the Raycast pointing at the player
 	if player_in_cone:
