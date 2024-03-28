@@ -1,134 +1,134 @@
-[gd_scene load_steps=26 format=3 uid="uid://csydwa7xiol8u"]
+[gd_scene load_steps=26 format=3 uid="uid://p407ft6tt7ig"]
 
-[ext_resource type="Texture2D" uid="uid://gono4cd2lnyn" path="res://assets/scenes/game/game_tilemap/floor_mosaic_1.png" id="1_xkx5u"]
-[ext_resource type="Texture2D" uid="uid://cm5o84wk1egb5" path="res://assets/scenes/game/game_tilemap/wall_ragged.png" id="2_8mfv3"]
-[ext_resource type="Texture2D" uid="uid://c3bjp82yexqo8" path="res://assets/scenes/game/game_tilemap/floor_granite.png" id="3_5uob7"]
-[ext_resource type="Texture2D" uid="uid://ciuitqk7nqhyj" path="res://assets/scenes/game/game_tilemap/floor_mosaic_2.png" id="3_ggmci"]
-[ext_resource type="Texture2D" uid="uid://myf408ig8rgv" path="res://assets/scenes/game/game_tilemap/floor_mosaic_edge_top.png" id="3_sw04o"]
-[ext_resource type="Texture2D" uid="uid://ibkgi48tdupx" path="res://assets/scenes/game/game_tilemap/floor_mosaic_edge_bottom.png" id="4_olapd"]
-[ext_resource type="Texture2D" uid="uid://dd0soedoore7a" path="res://assets/scenes/game/game_tilemap/floor_mosaic_edge_left.png" id="5_tj1yf"]
-[ext_resource type="Texture2D" uid="uid://dtuu4ml2h5ipb" path="res://assets/scenes/game/game_tilemap/floor_mosaic_edge_right.png" id="6_5daj7"]
-[ext_resource type="Texture2D" uid="uid://b81o63y6b0xu7" path="res://assets/scenes/game/game_tilemap/floor_mosaic_3.png" id="6_hvyui"]
-[ext_resource type="Texture2D" uid="uid://cq6q565cyyi8h" path="res://assets/scenes/game/game_tilemap/floor_mosaic_4.png" id="7_1yh8u"]
-[ext_resource type="Texture2D" uid="uid://c5yxevagwyr8o" path="res://assets/scenes/game/game_tilemap/floor_mosaic_corner.png" id="8_s2kjc"]
-[ext_resource type="Texture2D" uid="uid://d1dtxwxbg0pa8" path="res://assets/scenes/game/game_tilemap/wall.png" id="9_bdyum"]
+[ext_resource type="Texture2D" uid="uid://c3bjp82yexqo8" path="res://assets/scenes/game/game_tilemap/floor_granite.png" id="1_r3slo"]
+[ext_resource type="Texture2D" uid="uid://gjgr8ljmdnh4" path="res://assets/scenes/game/game_tilemap/floor_mosaic_1.png" id="2_xmgkr"]
+[ext_resource type="Texture2D" uid="uid://dyrq3y8vit8bm" path="res://assets/scenes/game/game_tilemap/floor_mosaic_edge_top.png" id="3_qv1p3"]
+[ext_resource type="Texture2D" uid="uid://dwtkn07motke5" path="res://assets/scenes/game/game_tilemap/wall.png" id="7_fwbln"]
+[ext_resource type="Texture2D" uid="uid://cm5o84wk1egb5" path="res://assets/scenes/game/game_tilemap/wall_ragged.png" id="8_t00xi"]
+[ext_resource type="Texture2D" uid="uid://cg2p1jwfhb3yn" path="res://assets/scenes/game/game_tilemap/floor_mosaic_1_invert.png" id="9_58ibt"]
+[ext_resource type="Texture2D" uid="uid://b81o63y6b0xu7" path="res://assets/scenes/game/game_tilemap/floor_mosaic_3.png" id="11_w8c6b"]
+[ext_resource type="Texture2D" uid="uid://cq6q565cyyi8h" path="res://assets/scenes/game/game_tilemap/floor_mosaic_4.png" id="12_80bfi"]
+[ext_resource type="Texture2D" uid="uid://c5yxevagwyr8o" path="res://assets/scenes/game/game_tilemap/floor_mosaic_corner.png" id="13_hs801"]
+[ext_resource type="Texture2D" uid="uid://x0hmaxcfot6v" path="res://assets/scenes/game/game_tilemap/floor_mosaic_edge_bottom.png" id="14_wmp3x"]
+[ext_resource type="Texture2D" uid="uid://bcvm7gsyl864i" path="res://assets/scenes/game/game_tilemap/floor_mosaic_edge_left.png" id="15_ueyka"]
+[ext_resource type="Texture2D" uid="uid://d3yfb1lsym8gk" path="res://assets/scenes/game/game_tilemap/floor_mosaic_edge_right.png" id="16_tn6cv"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_m6q45"]
-resource_name = "Basic Wall"
-texture = ExtResource("9_bdyum")
-texture_region_size = Vector2i(32, 32)
-0:0/0 = 0
-0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-0:0/0/physics_layer_0/angular_velocity = 0.0
-0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_o43kf"]
-resource_name = "Ragged Wall"
-texture = ExtResource("2_8mfv3")
-texture_region_size = Vector2i(32, 32)
-0:0/0 = 0
-0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-0:0/0/physics_layer_0/angular_velocity = 0.0
-0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tnvil"]
-resource_name = "Mosaic Floor Right Edge"
-texture = ExtResource("6_5daj7")
-texture_region_size = Vector2i(32, 32)
-0:0/0 = 0
-0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-0:0/0/physics_layer_0/angular_velocity = 0.0
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jgqpp"]
-resource_name = "Mosaic Floor Top Edge"
-texture = ExtResource("3_sw04o")
-texture_region_size = Vector2i(32, 32)
-0:0/0 = 0
-0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-0:0/0/physics_layer_0/angular_velocity = 0.0
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7sfff"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gfm7f"]
 resource_name = "Granite Floor"
-texture = ExtResource("3_5uob7")
+texture = ExtResource("1_r3slo")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:0/0/physics_layer_0/angular_velocity = 0.0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_65vam"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wywho"]
 resource_name = "Mosaic Floor 1"
-texture = ExtResource("1_xkx5u")
+texture = ExtResource("2_xmgkr")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:0/0/physics_layer_0/angular_velocity = 0.0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tvb6j"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ilkgg"]
+resource_name = "Mosaic Floor Top Edge"
+texture = ExtResource("3_qv1p3")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jdbgw"]
+resource_name = "Wall"
+texture = ExtResource("7_fwbln")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gxty6"]
+resource_name = "Ragged Wall"
+texture = ExtResource("8_t00xi")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ihttw"]
 resource_name = "Mosaic Floor 2"
-texture = ExtResource("3_ggmci")
+texture = ExtResource("9_58ibt")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:0/0/physics_layer_0/angular_velocity = 0.0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ctjvb"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fge1n"]
 resource_name = "Mosaic Floor 3"
-texture = ExtResource("6_hvyui")
+texture = ExtResource("11_w8c6b")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:0/0/physics_layer_0/angular_velocity = 0.0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jwa37"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_krmee"]
 resource_name = "Mosaic Floor 4"
-texture = ExtResource("7_1yh8u")
+texture = ExtResource("12_80bfi")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:0/0/physics_layer_0/angular_velocity = 0.0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pt73w"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gkowh"]
 resource_name = "Mosaic Floor Corner"
-texture = ExtResource("8_s2kjc")
+texture = ExtResource("13_hs801")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:0/0/physics_layer_0/angular_velocity = 0.0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1q0j4"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_agl3p"]
 resource_name = "Mosaic Floor Bottom Edge"
-texture = ExtResource("4_olapd")
+texture = ExtResource("14_wmp3x")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:0/0/physics_layer_0/angular_velocity = 0.0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8tyae"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_up4hc"]
 resource_name = "Mosaic Floor Left Edge"
-texture = ExtResource("5_tj1yf")
+texture = ExtResource("15_ueyka")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:0/0/physics_layer_0/angular_velocity = 0.0
 
-[sub_resource type="TileSet" id="TileSet_gsge2"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_x4yt1"]
+resource_name = "Mosaic Floor Right Edge"
+texture = ExtResource("16_tn6cv")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+
+[sub_resource type="TileSet" id="TileSet_pkara"]
 tile_size = Vector2i(32, 32)
 physics_layer_0/collision_layer = 2
 physics_layer_0/collision_mask = 2
-sources/0 = SubResource("TileSetAtlasSource_m6q45")
-sources/1 = SubResource("TileSetAtlasSource_o43kf")
-sources/2 = SubResource("TileSetAtlasSource_7sfff")
-sources/3 = SubResource("TileSetAtlasSource_65vam")
-sources/4 = SubResource("TileSetAtlasSource_tvb6j")
-sources/5 = SubResource("TileSetAtlasSource_ctjvb")
-sources/6 = SubResource("TileSetAtlasSource_jwa37")
-sources/7 = SubResource("TileSetAtlasSource_pt73w")
-sources/8 = SubResource("TileSetAtlasSource_1q0j4")
-sources/9 = SubResource("TileSetAtlasSource_8tyae")
-sources/10 = SubResource("TileSetAtlasSource_tnvil")
-sources/11 = SubResource("TileSetAtlasSource_jgqpp")
+sources/0 = SubResource("TileSetAtlasSource_gfm7f")
+sources/1 = SubResource("TileSetAtlasSource_wywho")
+sources/2 = SubResource("TileSetAtlasSource_ihttw")
+sources/4 = SubResource("TileSetAtlasSource_fge1n")
+sources/5 = SubResource("TileSetAtlasSource_krmee")
+sources/6 = SubResource("TileSetAtlasSource_gkowh")
+sources/7 = SubResource("TileSetAtlasSource_agl3p")
+sources/8 = SubResource("TileSetAtlasSource_up4hc")
+sources/9 = SubResource("TileSetAtlasSource_x4yt1")
+sources/10 = SubResource("TileSetAtlasSource_ilkgg")
+sources/14 = SubResource("TileSetAtlasSource_jdbgw")
+sources/15 = SubResource("TileSetAtlasSource_gxty6")
 
 [node name="GameTilemap" type="TileMap"]
 z_index = -5
-tile_set = SubResource("TileSet_gsge2")
+tile_set = SubResource("TileSet_pkara")
 format = 2
