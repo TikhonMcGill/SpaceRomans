@@ -21,6 +21,7 @@ config/icon="res://icon.svg"
 
 GameManager="*res://assets/scenes/singletons/game_manager/game_manager.gd"
 ModifierManager="*res://assets/scenes/singletons/modifier_manager/modifier_manager.tscn"
+NamingManager="*res://assets/scenes/singletons/naming_manager/naming_manager.tscn"
 
 [input]
 

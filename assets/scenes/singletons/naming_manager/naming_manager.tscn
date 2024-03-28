@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://chuso7nu4fuvr"]
+
+[ext_resource type="Script" path="res://assets/scenes/singletons/naming_manager/naming_manager.gd" id="1_ipppg"]
+
+[node name="NamingManager" type="Node"]
+script = ExtResource("1_ipppg")
