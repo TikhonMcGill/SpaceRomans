@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://c01hct8lwvtd4"]
 
-[ext_resource type="Texture2D" uid="uid://jonppjcr3lh8" path="res://icon.svg" id="1_4yd83"]
 [ext_resource type="Script" path="res://assets/scenes/game/player/player.gd" id="1_wpdis"]
 [ext_resource type="PackedScene" uid="uid://clp4q4tmvx6ec" path="res://assets/scenes/base_objects/noise_maker/noise_maker.tscn" id="3_pff3a"]
+[ext_resource type="PackedScene" uid="uid://cmj5r4w3qli65" path="res://assets/scenes/graphics/character_graphic/character_graphic.tscn" id="4_pf3jj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kn8lu"]
 size = Vector2(31, 31)
@@ -15,9 +15,7 @@ collision_layer = 514
 collision_mask = 2
 script = ExtResource("1_wpdis")
 
-[node name="Icon" type="Sprite2D" parent="."]
-scale = Vector2(0.25, 0.25)
-texture = ExtResource("1_4yd83")
+[node name="PlayerCharacterGraphic" parent="." instance=ExtResource("4_pf3jj")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_kn8lu")
@@ -37,3 +35,12 @@ enabled = false
 collision_mask = 1024
 
 [node name="PlayerCamera" type="Camera2D" parent="."]
+
+[node name="Laserbeam" type="Line2D" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0)
+points = PackedVector2Array(0, 0, 0, 0)
+width = 5.0
+default_color = Color(0, 1, 1, 1)
+begin_cap_mode = 2
+end_cap_mode = 2

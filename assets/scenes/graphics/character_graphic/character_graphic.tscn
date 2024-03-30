@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://cmj5r4w3qli65"]
+
+[ext_resource type="Script" path="res://assets/scenes/graphics/character_graphic/character_graphic.gd" id="1_l8hqa"]
+[ext_resource type="Texture2D" uid="uid://cjya7rjf4rh4a" path="res://assets/scenes/graphics/character_graphic/bodies/body_front.png" id="2_5ywig"]
+[ext_resource type="Texture2D" uid="uid://c8t42aubrfri3" path="res://assets/scenes/graphics/character_graphic/heads/head_front.png" id="3_b6bx0"]
+[ext_resource type="Texture2D" uid="uid://cvxqwoa4xgo5" path="res://assets/scenes/graphics/character_graphic/hats/roman_helmet/roman_helmet_front.png" id="4_kv2ey"]
+
+[node name="CharacterGraphic" type="Node2D"]
+position = Vector2(0, -8)
+script = ExtResource("1_l8hqa")
+
+[node name="CharacterBody" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("2_5ywig")
+
+[node name="CharacterHead" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("3_b6bx0")
+
+[node name="CharacterHat" type="Sprite2D" parent="."]
+visible = false
+texture_filter = 1
+texture = ExtResource("4_kv2ey")
