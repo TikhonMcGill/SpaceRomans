@@ -21,9 +21,20 @@ class_name Enemy
 
 var last_player_position : Vector2 = -Vector2.ONE ##The last position the player was, according to the enemy
 
+var dead := false
+
 func _process(delta: float) -> void:
-	if enemy_health <= 0:
-		queue_free()
+	if enemy_health <= 0 and dead == false:
+		dead = true
+		velocity = Vector2.ZERO
+		state_machine.queue_free()
+		enemy_vision.visible = false
+		
+		var new_tween := create_tween()
+		new_tween.tween_property(self,"modulate",Color.BLACK,0.1)
+		new_tween.tween_property(self,"rotation_degrees",randi_range(45,270),0.4)
+		new_tween.tween_property(self,"modulate:a",0,1.5)
+		new_tween.tween_callback(queue_free)
 
 func _ready() -> void:
 	enemy_character_graphic.my_character = self
