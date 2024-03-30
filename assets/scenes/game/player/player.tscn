@@ -35,3 +35,5 @@ shape = SubResource("RectangleShape2D_s8xu6")
 [node name="ShootCast" type="RayCast2D" parent="."]
 enabled = false
 collision_mask = 1024
+
+[node name="PlayerCamera" type="Camera2D" parent="."]
