@@ -10,11 +10,38 @@ class_name Player #Using "class_name" means other scripts will be able to see th
 ##
 ##The User controls the player, moving around using WASD, Sprinting using Shift, Sneaking using CTRL
 
+signal game_over ##Emitted when the Player's health reaches 0 (or when they fail the objective, but that's TODO)
+
 #@export means that the Variable can be edited in the inspector
 
 @export var base_speed : int = 200 ##The Base Speed of the Player, when they're not Sprinting or sneaking
 @export var sprint_speed : int = 400 ##The Speed of the Player when they're sprinting using SHIFT
 @export var sneak_speed : int = 50 ##The Speed of the Player when they're sneaking using CTRL
+
+@export var shoot_range : int = 128 ##The Maximum Range the Player can shoot
+@export var shoot_damage : int = 10 ##The Damage the Player does when Shooting
+
+@export var walk_noise : int = 32 ##The Base Noise when the Player is walking
+@export var sprint_noise : int = 64 ##The Noise when the Player is sprinting
+@export var shoot_noise : int = 128 ##The Noise when the Player is shooting
+
+@onready var player_noise: NoiseMaker = $PlayerNoise
+
+@onready var player_snapping: Area2D = $PlayerSnapping
+
+@onready var shoot_cast: RayCast2D = $ShootCast
+
+var shooting : bool = false ##Whether or not the player is shooting - useful for a (ugly) solution to noise radius being overwritten when shooting
+
+var player_health : int = 100 ##The Health of the Player
+
+func _process(delta: float) -> void:
+	if player_health <= 0:
+		print("GAME OVER!!!")
+		game_over.emit()
+	
+	_handle_combat()
+	queue_redraw()
 
 #Physics Process is run every Physics frame,
 #so it's good to do movement etc. in it (to prevent Bethesda-like Physics being dependent on Framerate)
@@ -23,6 +50,53 @@ func _physics_process(delta: float) -> void:
 	_handle_noise()
 	move_and_slide() #Move and Slide is a built in method of CharacterBody2D, and is good because characters gracefully slide against e.g. slopes, instead of just getting stopped
 
+##A Function to handle player Combat
+func _handle_combat() -> void:
+	if Input.is_action_just_pressed("neck_snap") == true:
+		_handle_neck_snap()
+	elif Input.is_action_just_pressed("shoot") == true:
+		_handle_shooting()
+
+##A Function to Handle the Player stealthily killing an enemy using a Neck Snap
+func _handle_neck_snap() -> void:
+	var possible_enemies := player_snapping.get_overlapping_bodies()
+	if len(possible_enemies) > 0:
+		var enemy : Enemy = possible_enemies[0]
+		
+		if enemy.state_machine.current_state != enemy.state_machine.combat_state:
+			enemy.enemy_health = 0
+
+##A Function to Handle the Player Shooting using Left Click
+func _handle_shooting() -> void:
+	shoot_cast.target_position = get_global_mouse_position() - shoot_cast.global_position
+	shoot_cast.target_position = shoot_cast.target_position.limit_length(shoot_range)
+	
+	var starting_noise_radius := player_noise.noise_radius
+	var starting_player_noise := GameManager.player_noise
+	
+	var tween := get_tree().create_tween()
+	var tween_2 := get_tree().create_tween()
+	
+	shooting = true
+	
+	tween.tween_property(player_noise,"noise_radius",shoot_noise,0.1)
+	tween.tween_property(player_noise,"noise_radius",starting_noise_radius,0.1)
+	
+	tween_2.tween_property(GameManager,"player_noise",10,0.1)
+	tween_2.tween_property(GameManager,"player_noise",starting_player_noise,0.1)
+	
+	shoot_cast.force_raycast_update()
+	
+	var victim : Enemy = shoot_cast.get_collider()
+	if victim != null:
+		victim.enemy_health -= shoot_damage
+		victim.state_machine.combat_state.target = self
+		victim.state_machine.to_combat_state()
+	
+	await tween.finished
+	
+	shooting = false
+	
 #In Godot, starting a function with an underline is mostly a convenient way of establishing
 #private methods - methods starting with an underline aren't shown in external classes (unless explicitly searched for)
 #which is useful to prevent clutter
@@ -63,15 +137,30 @@ func _get_effective_speed() -> int:
 
 ##A Function to handle the Player's Noise dependent on if they're moving or not
 func _handle_noise() -> void:
+	if shooting == true:
+		return
+	
 	#If the Player is not moving (i.e. velocity is 0), Player Noise is 0
-	if velocity.length() == 0:
+	if velocity.length() == 0 and shooting == false:
 		GameManager.player_noise = 0
+		player_noise.noise_radius = 0
 	#If the Player's speed is Sneak Speed (i.e. they're sneaking), Player Noise is 0
-	elif velocity.length() == sneak_speed:
+	elif velocity.length() == sneak_speed and shooting == false:
 		GameManager.player_noise = 0
+		player_noise.noise_radius = 0
 	#If the Player's speed is Sprint Speed (i.e. they're sprinting), Player Noise is 2
-	elif velocity.length() == sprint_speed:
+	elif velocity.length() == sprint_speed and (shooting == false or player_noise.noise_radius < sprint_noise):
 		GameManager.player_noise = 2
+		player_noise.noise_radius = sprint_noise
 	#Otherwise, Player noise is 1
 	else:
-		GameManager.player_noise = 1
+		if (shooting == false or player_noise.noise_radius < walk_noise):
+			player_noise.noise_radius = walk_noise
+			GameManager.player_noise = 1
+
+func _draw() -> void:
+	#If the Player noise is greater than 0, draw a circle with the radius equalling the noise
+	if player_noise.noise_radius > 0:
+		var noise_color = Color.WHITE
+		noise_color.a = 0.5
+		draw_circle(Vector2.ZERO,player_noise.noise_radius,noise_color)

@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://b7mct0vifbfw0"]
+
+[ext_resource type="Script" path="res://assets/scenes/graphics/random_planet/background_planet.gd" id="1_bw2ak"]
+
+[node name="BackgroundPlanet" type="Node2D"]
+z_index = -10
+script = ExtResource("1_bw2ak")
+
+[node name="PlanetSurface" type="Sprite2D" parent="."]
+texture_filter = 1
+
+[node name="PlanetPopulation" type="Sprite2D" parent="."]
+texture_filter = 1
