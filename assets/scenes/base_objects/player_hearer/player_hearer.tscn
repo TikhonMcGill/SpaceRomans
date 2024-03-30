@@ -16,5 +16,9 @@ shape = SubResource("CircleShape2D_f7obv")
 wait_time = 0.1
 autostart = true
 
+[node name="ObstacleCast" type="RayCast2D" parent="."]
+enabled = false
+collision_mask = 514
+
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="timeout" from="HearTimer" to="." method="_on_hear_timer_timeout"]

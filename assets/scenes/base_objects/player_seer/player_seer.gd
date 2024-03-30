@@ -34,7 +34,7 @@ func _process(delta: float) -> void:
 		player_cast.global_rotation = player_cast.global_position.angle_to_point(player_in_cone.global_position)
 		player_cast.force_raycast_update()
 		
-		var is_detected = player_cast.is_colliding()
+		var is_detected = player_cast.is_colliding() and player_cast.get_collider() is Player
 		
 		if is_detected == true:
 			player_seen.emit(player_in_cone)
