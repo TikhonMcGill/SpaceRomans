@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://dgmvvvdayqqp3"]
+[gd_scene load_steps=4 format=3 uid="uid://dgmvvvdayqqp3"]
 
 [ext_resource type="Script" path="res://assets/scenes/menus/main_menu/main_menu.gd" id="1_qk6wy"]
+[ext_resource type="Script" path="res://assets/scenes/menus/main_menu/character_customization_container.gd" id="2_goyhi"]
+[ext_resource type="PackedScene" uid="uid://cmj5r4w3qli65" path="res://assets/scenes/graphics/character_graphic/character_graphic.tscn" id="2_mc8px"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -26,11 +28,12 @@ theme_override_constants/margin_top = 50
 theme_override_constants/margin_right = 50
 theme_override_constants/margin_bottom = 50
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
+[node name="MainMenuContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
+visible = false
 layout_mode = 2
 theme_override_constants/separation = 20
 
-[node name="TitleLabel" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer"]
+[node name="TitleLabel" type="Label" parent="PanelContainer/MarginContainer/MainMenuContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 36
@@ -38,7 +41,7 @@ text = "Our Game Name goes Here"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="CreatorLabel" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer"]
+[node name="CreatorLabel" type="Label" parent="PanelContainer/MarginContainer/MainMenuContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 24
@@ -46,22 +49,99 @@ text = "Legion, 2024"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HSeparator" type="HSeparator" parent="PanelContainer/MarginContainer/VBoxContainer"]
+[node name="HSeparator" type="HSeparator" parent="PanelContainer/MarginContainer/MainMenuContainer"]
 layout_mode = 2
 
-[node name="PrologueButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
+[node name="PrologueButton" type="Button" parent="PanelContainer/MarginContainer/MainMenuContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 text = "Play Prologue (Tutorial)"
 
-[node name="MissionSelectButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
+[node name="MissionSelectButton" type="Button" parent="PanelContainer/MarginContainer/MainMenuContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 text = "Select Mission"
 
-[node name="QuitGameButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
+[node name="CustomizeCharacterButton" type="Button" parent="PanelContainer/MarginContainer/MainMenuContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Customize Character"
+
+[node name="QuitGameButton" type="Button" parent="PanelContainer/MarginContainer/MainMenuContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 text = "Quit Game"
 
-[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/QuitGameButton" to="." method="_on_quit_game_button_pressed"]
+[node name="CharacterCustomizationContainer" type="ScrollContainer" parent="PanelContainer/MarginContainer"]
+layout_mode = 2
+horizontal_scroll_mode = 0
+script = ExtResource("2_goyhi")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/CharacterCustomizationContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="TitleLabel" type="Label" parent="PanelContainer/MarginContainer/CharacterCustomizationContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 36
+text = "Character Customization"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/CharacterCustomizationContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ExplanationLabel" type="Label" parent="PanelContainer/MarginContainer/CharacterCustomizationContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 24
+text = "Make the Protagonist your own!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control" type="Control" parent="PanelContainer/MarginContainer/CharacterCustomizationContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="CharacterGraphic" parent="PanelContainer/MarginContainer/CharacterCustomizationContainer/VBoxContainer/HBoxContainer/Control" instance=ExtResource("2_mc8px")]
+position = Vector2(120, 40)
+
+[node name="SkinColorPrompt" type="Label" parent="PanelContainer/MarginContainer/CharacterCustomizationContainer/VBoxContainer"]
+layout_mode = 2
+text = "Select your Character's Skin Color:"
+
+[node name="SkinColorPickerButton" type="ColorPickerButton" parent="PanelContainer/MarginContainer/CharacterCustomizationContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+edit_alpha = false
+
+[node name="RandomSkinColorButton" type="Button" parent="PanelContainer/MarginContainer/CharacterCustomizationContainer/VBoxContainer"]
+layout_mode = 2
+text = "Random Skin Color"
+
+[node name="ClothingColorPrompt" type="Label" parent="PanelContainer/MarginContainer/CharacterCustomizationContainer/VBoxContainer"]
+layout_mode = 2
+text = "Select your Character's Clothing Color:"
+
+[node name="ClothingColorPickerButton" type="ColorPickerButton" parent="PanelContainer/MarginContainer/CharacterCustomizationContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+edit_alpha = false
+
+[node name="RandomClothingColorButton" type="Button" parent="PanelContainer/MarginContainer/CharacterCustomizationContainer/VBoxContainer"]
+layout_mode = 2
+text = "Random Clothing Color"
+
+[node name="BackButton" type="Button" parent="PanelContainer/MarginContainer/CharacterCustomizationContainer/VBoxContainer"]
+layout_mode = 2
+text = "Back to Main Menu"
+
+[connection signal="pressed" from="PanelContainer/MarginContainer/MainMenuContainer/CustomizeCharacterButton" to="." method="_on_customize_character_button_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/MainMenuContainer/QuitGameButton" to="." method="_on_quit_game_button_pressed"]
+[connection signal="hidden" from="PanelContainer/MarginContainer/CharacterCustomizationContainer" to="PanelContainer/MarginContainer/CharacterCustomizationContainer" method="_on_hidden"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/CharacterCustomizationContainer/VBoxContainer/RandomSkinColorButton" to="PanelContainer/MarginContainer/CharacterCustomizationContainer" method="_on_random_skin_color_button_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/CharacterCustomizationContainer/VBoxContainer/RandomClothingColorButton" to="PanelContainer/MarginContainer/CharacterCustomizationContainer" method="_on_random_clothing_color_button_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/CharacterCustomizationContainer/VBoxContainer/BackButton" to="." method="_on_customization_back_button_pressed"]

@@ -3,7 +3,8 @@ extends Node
 @export var latin_words : Array[String] = [
 	"Caesar","Augustus","Maximus","Impervius",
 	"Pulcher","Invictus","Imperator","Magnus",
-	"Optimus"
+	"Optimus","Magister","Dominus","Princeps",
+	"Romanus","Praetorianus"
 ]
 
 #RNS stands for "Romana Navis Spatii", which is Latin for "Roman Ship of Space", according to

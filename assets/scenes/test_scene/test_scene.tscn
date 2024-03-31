@@ -1,15 +1,20 @@
-[gd_scene load_steps=4 format=3 uid="uid://vrdgkak2r1mm"]
+[gd_scene load_steps=5 format=3 uid="uid://vrdgkak2r1mm"]
 
 [ext_resource type="PackedScene" uid="uid://c01hct8lwvtd4" path="res://assets/scenes/game/player/player.tscn" id="1_cg6fc"]
 [ext_resource type="PackedScene" uid="uid://cyyvt2c5voxqn" path="res://assets/scenes/game/enemy/enemy.tscn" id="2_hrhxx"]
+[ext_resource type="PackedScene" uid="uid://p407ft6tt7ig" path="res://assets/scenes/game/game_tilemap/game_tilemap.tscn" id="4_3h8ro"]
 [ext_resource type="PackedScene" uid="uid://ytgjtd0cfu22" path="res://assets/scenes/graphics/space_background/space_background.tscn" id="4_edrbb"]
 
 [node name="TestScene" type="Node"]
 
 [node name="SpaceBackground" parent="." instance=ExtResource("4_edrbb")]
+visible = false
 
 [node name="Player" parent="." instance=ExtResource("1_cg6fc")]
 position = Vector2(304, 168)
 
 [node name="Enemy" parent="." instance=ExtResource("2_hrhxx")]
 position = Vector2(736, 352)
+
+[node name="GameTilemap" parent="." instance=ExtResource("4_3h8ro")]
+layer_0/tile_data = PackedInt32Array(327700, 15, 0, 393236, 15, 0, 458772, 15, 0, 524308, 15, 0, 589844, 15, 0, 655380, 15, 0, 720916, 15, 0, 786452, 15, 0, 851988, 15, 0, 917524, 15, 0, 983060, 15, 0, 1048596, 15, 0)

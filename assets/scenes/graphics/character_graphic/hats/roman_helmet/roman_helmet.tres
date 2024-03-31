@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="CharacterHat" load_steps=5 format=3 uid="uid://m3pe401cxea5"]
+
+[ext_resource type="Texture2D" uid="uid://0bkoths4n1bk" path="res://assets/scenes/graphics/character_graphic/hats/roman_helmet/roman_helmet_back.png" id="1_4hups"]
+[ext_resource type="Script" path="res://assets/scenes/graphics/character_graphic/character_hat.gd" id="1_cekxo"]
+[ext_resource type="Texture2D" uid="uid://cvxqwoa4xgo5" path="res://assets/scenes/graphics/character_graphic/hats/roman_helmet/roman_helmet_front.png" id="2_vxo1f"]
+[ext_resource type="Texture2D" uid="uid://vjtwsavo2qym" path="res://assets/scenes/graphics/character_graphic/hats/roman_helmet/roman_helmet_side.png" id="3_nx3yb"]
+
+[resource]
+script = ExtResource("1_cekxo")
+hat_front = ExtResource("2_vxo1f")
+hat_side = ExtResource("3_nx3yb")
+hat_back = ExtResource("1_4hups")

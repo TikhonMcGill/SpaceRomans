@@ -25,15 +25,25 @@ signal game_over ##Emitted when the Player's health reaches 0 (or when they fail
 @export var sprint_noise : int = 64 ##The Noise when the Player is sprinting
 @export var shoot_noise : int = 128 ##The Noise when the Player is shooting
 
+@onready var player_character_graphic: CharacterGraphic = $PlayerCharacterGraphic
+
 @onready var player_noise: NoiseMaker = $PlayerNoise
 
 @onready var player_snapping: Area2D = $PlayerSnapping
 
 @onready var shoot_cast: RayCast2D = $ShootCast
 
+@onready var laserbeam: Line2D = $Laserbeam
+
 var shooting : bool = false ##Whether or not the player is shooting - useful for a (ugly) solution to noise radius being overwritten when shooting
 
 var player_health : int = 100 ##The Health of the Player
+
+func _ready() -> void:
+	player_character_graphic.my_character = self
+	player_character_graphic.set_skin_color(GameManager.player_skin_color)
+	player_character_graphic.set_clothing_color(GameManager.player_clothing_color)
+	player_character_graphic.set_hat(GameManager.player_hat)
 
 func _process(delta: float) -> void:
 	if player_health <= 0:
@@ -76,14 +86,22 @@ func _handle_shooting() -> void:
 	
 	var tween := get_tree().create_tween()
 	var tween_2 := get_tree().create_tween()
+	var tween_3 := get_tree().create_tween()
 	
 	shooting = true
+	
+	laserbeam.points[0] = Vector2.ZERO
+	laserbeam.points[1] = shoot_cast.target_position
+	laserbeam.visible = true
 	
 	tween.tween_property(player_noise,"noise_radius",shoot_noise,0.1)
 	tween.tween_property(player_noise,"noise_radius",starting_noise_radius,0.1)
 	
 	tween_2.tween_property(GameManager,"player_noise",10,0.1)
 	tween_2.tween_property(GameManager,"player_noise",starting_player_noise,0.1)
+	
+	tween_3.tween_property(laserbeam,"modulate:a",1,0.1)
+	tween_3.tween_property(laserbeam,"modulate:a",0,0.1)
 	
 	shoot_cast.force_raycast_update()
 	
@@ -96,6 +114,7 @@ func _handle_shooting() -> void:
 	await tween.finished
 	
 	shooting = false
+	laserbeam.visible = false
 	
 #In Godot, starting a function with an underline is mostly a convenient way of establishing
 #private methods - methods starting with an underline aren't shown in external classes (unless explicitly searched for)

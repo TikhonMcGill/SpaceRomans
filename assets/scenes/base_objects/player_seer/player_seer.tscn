@@ -17,7 +17,7 @@ polygon = PackedVector2Array(16, 16, 16, -16, 160, -64, 168, 0, 160, 64)
 position = Vector2(32, 0)
 enabled = false
 target_position = Vector2(136, 0)
-collision_mask = 512
+collision_mask = 514
 
 [node name="SeerGraphic" type="Polygon2D" parent="."]
 color = Color(1, 0, 0, 0.392157)
