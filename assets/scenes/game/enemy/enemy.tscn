@@ -1,13 +1,13 @@
 [gd_scene load_steps=7 format=3 uid="uid://cyyvt2c5voxqn"]
 
 [ext_resource type="Script" path="res://assets/scenes/game/enemy/enemy.gd" id="1_1yo45"]
-[ext_resource type="Texture2D" uid="uid://jonppjcr3lh8" path="res://icon.svg" id="1_mpaha"]
 [ext_resource type="PackedScene" uid="uid://dspwxtfnuecfr" path="res://assets/scenes/game/enemy/enemy_state_machine/enemy_state_machine.tscn" id="2_yae52"]
+[ext_resource type="PackedScene" uid="uid://cmj5r4w3qli65" path="res://assets/scenes/graphics/character_graphic/character_graphic.tscn" id="3_3x65d"]
 [ext_resource type="PackedScene" uid="uid://d0nlakcyhyls2" path="res://assets/scenes/base_objects/player_seer/player_seer.tscn" id="3_5gqqp"]
 [ext_resource type="PackedScene" uid="uid://dksdsjk2rcc6h" path="res://assets/scenes/base_objects/player_hearer/player_hearer.tscn" id="4_2iv1g"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tui7h"]
-size = Vector2(31, 31)
+size = Vector2(31.5, 31)
 
 [node name="Enemy" type="CharacterBody2D"]
 collision_layer = 1026
@@ -16,11 +16,10 @@ script = ExtResource("1_1yo45")
 
 [node name="EnemyStateMachine" parent="." instance=ExtResource("2_yae52")]
 
-[node name="Icon" type="Sprite2D" parent="."]
-scale = Vector2(0.25, 0.25)
-texture = ExtResource("1_mpaha")
+[node name="EnemyCharacterGraphic" parent="." instance=ExtResource("3_3x65d")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.25, 0)
 shape = SubResource("RectangleShape2D_tui7h")
 
 [node name="EnemyVision" parent="." instance=ExtResource("3_5gqqp")]
