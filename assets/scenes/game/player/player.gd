@@ -105,8 +105,8 @@ func _handle_shooting() -> void:
 	
 	shoot_cast.force_raycast_update()
 	
-	var victim : Enemy = shoot_cast.get_collider()
-	if victim != null:
+	var victim := shoot_cast.get_collider()
+	if victim != null and victim is Enemy:
 		victim.enemy_health -= shoot_damage
 		victim.state_machine.combat_state.target = self
 		victim.state_machine.to_combat_state()
