@@ -1,0 +1,15 @@
+[gd_scene load_steps=5 format=3 uid="uid://ds7ktxk0cv81q"]
+
+[ext_resource type="Script" path="res://assets/scenes/game/enemy/enemy_state_machine/enemy_state_machine.gd" id="1_y3dat"]
+[ext_resource type="PackedScene" uid="uid://m40gykhoarq8" path="res://assets/scenes/game/enemy/enemy_state_machine/patrolling_state/patrolling_state.tscn" id="2_gm5mu"]
+[ext_resource type="PackedScene" uid="uid://c1tvdgss6shb0" path="res://assets/scenes/game/enemy/enemy_state_machine/combat_state/combat_state.tscn" id="3_kk402"]
+[ext_resource type="PackedScene" uid="uid://m15grymg5r8c" path="res://assets/scenes/game/enemy/enemy_state_machine/searching_state/searching_state.tscn" id="4_8x1ox"]
+
+[node name="EnemyStateMachine" type="Node"]
+script = ExtResource("1_y3dat")
+
+[node name="PatrollingState" parent="." instance=ExtResource("2_gm5mu")]
+
+[node name="CombatState" parent="." instance=ExtResource("3_kk402")]
+
+[node name="SearchingState" parent="." instance=ExtResource("4_8x1ox")]
