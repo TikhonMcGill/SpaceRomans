@@ -22,12 +22,12 @@ func _activate_gameplay_modifier(gameplay_modifier: Modifier):
 	print("Activating gameplay modifier: ", gameplay_modifier.modifier_name) ##Used for eventual debugging/tracking
 	##TODO Add code to apply the effect of the gameplay modifier in game
 	
-	if gameplay_modifier.modifier_name == "Rage": ##Test for Rage gameplay modifier effect
-		Enemy._set_enemy_damage(100) 
-	elif gameplay_modifier.modifier_name == "Juggernaut": ##Test for Juggernaut gameplay modifier effect
-		Enemy._set_enemy_health(200)
-	elif gameplay_modifier.modifier_name == "Taxed": ##Test for Taxed gameplay modifier effect
-		Enemy._set_enemy_speed(50)
+	##if gameplay_modifier.modifier_name == "Rage": ##Test for Rage gameplay modifier effect
+		##Enemy._set_enemy_damage(100) 
+	##elif gameplay_modifier.modifier_name == "Juggernaut": ##Test for Juggernaut gameplay modifier effect
+		##Enemy._set_enemy_health(200)
+	##elif gameplay_modifier.modifier_name == "Taxed": ##Test for Taxed gameplay modifier effect
+		##Enemy._set_enemy_speed(50)
 
 ##Method to apply the gameplay modifier at runtime in-game
 func _ready():
