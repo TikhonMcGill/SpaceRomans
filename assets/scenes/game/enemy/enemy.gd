@@ -10,10 +10,8 @@ signal enemy_killed ##Emitted when the Enemy is killed
 
 @export var enemy_speed : int = GameManager.effective_enemy_speed
 @export var enemy_patrol_speed : int = GameManager.effective_enemy_patrol_speed
-@export var enemy_damage : int = GameManager.effective_enemy_damage ##Test TODO 
-@export var enemy_health : int = GameManager.effective_enemy_health ##Test TODO
-
-
+@export var enemy_damage : int = GameManager.effective_enemy_damage
+@export var enemy_health : int = GameManager.effective_enemy_health
 
 @export var patrol_points : Array[PatrolPoint] = []
 @export var back_and_forth_patrol : bool = false
@@ -29,6 +27,12 @@ signal enemy_killed ##Emitted when the Enemy is killed
 var last_player_position : Vector2 = -Vector2.ONE ##The last position the player was, according to the enemy
 
 var dead := false
+
+func apply_values() -> void:
+	enemy_speed = GameManager.effective_enemy_speed
+	enemy_patrol_speed = GameManager.effective_enemy_patrol_speed
+	enemy_damage = GameManager.effective_enemy_damage
+	enemy_health = GameManager.effective_enemy_health
 
 func _die() -> void:
 	if dead == true:

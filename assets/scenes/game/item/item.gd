@@ -27,16 +27,17 @@ func _process(delta: float) -> void:
 	
 	if item_health <= 0:
 		if is_obj:
+			print("Destroyed!")
 			destroy_objective.emit()
 		queue_free()
-	if item_health < 100000000000:
-		if is_button:
-			activate_button.emit()
-			item_health = 100000000000
+	if is_button and item_health < 100_000_000_000:
+		print("Button clicked!")
+		activate_button.emit()
+		item_health = 100_000_000_000
 
 func _create_obj() ->void:
 	is_obj = true
-	
+
 func _create_button() ->void:
 	is_button = true
-	item_health = 100000000000
+	item_health = 100_000_000_000
