@@ -25,8 +25,8 @@ NamingManager="*res://assets/scenes/singletons/naming_manager/naming_manager.tsc
 
 [display]
 
-window/size/viewport_width=720
-window/size/viewport_height=480
+window/size/viewport_width=1190
+window/size/viewport_height=738
 
 [input]
 

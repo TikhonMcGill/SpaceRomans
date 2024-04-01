@@ -29,6 +29,7 @@ func _on_shoot_timer_timeout() -> void:
 	
 	laser.points[0] = my_body.global_position + Vector2.ZERO
 	laser.points[1] = my_body.global_position + shoot_cast.target_position
+	
 	laser.visible = true
 	laser.modulate.a = 1.0
 	var tween := create_tween()

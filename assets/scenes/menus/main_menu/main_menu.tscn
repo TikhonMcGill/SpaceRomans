@@ -107,7 +107,8 @@ layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="CharacterGraphic" parent="PanelContainer/MarginContainer/CharacterCustomizationContainer/VBoxContainer/HBoxContainer/Control" instance=ExtResource("2_mc8px")]
-position = Vector2(120, 40)
+position = Vector2(368, 73)
+scale = Vector2(2, 2)
 
 [node name="SkinColorPrompt" type="Label" parent="PanelContainer/MarginContainer/CharacterCustomizationContainer/VBoxContainer"]
 layout_mode = 2
