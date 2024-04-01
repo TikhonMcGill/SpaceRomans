@@ -6,12 +6,18 @@ class_name Enemy
 ##
 ##Enemies have a Cone of Vision, and if they see the player in it, they'll attack
 
-@export var enemy_speed : int = 200
+##@export var enemy_speed : int = 200 ##Test - commented out
 ##@export var enemy_damage : int = 50 ##Test - commented out
-@export var enemy_health : int = 100
+##@export var enemy_health : int = 100 ##Test - commented out
 
-##Test variable for Anger gameplay modifier
+##Test variable for Rage gameplay modifier
 static var enemy_damage : int = 50
+
+##Test variable for Juggernaut gameplay modifier
+static var enemy_health : int = 100
+
+##Test variable for Taxed gameplay modifier
+static var enemy_speed : int = 200
 
 @export var patrol_points : Array[PatrolPoint] = []
 @export var back_and_forth_patrol : bool = false
@@ -78,6 +84,14 @@ func _physics_process(delta: float) -> void:
 func look_at_point(pos : Vector2) -> void:
 	enemy_vision.rotation = lerp_angle(enemy_vision.rotation,enemy_vision.global_position.angle_to_point(pos),0.1)
 
-##Test static function for gameplay modifier (Anger)
+##Test static function for gameplay modifier (Rage)
 static func _set_enemy_damage(enemy_damage_value: int):
 	enemy_damage = enemy_damage_value
+
+##Test static function for gameplay modifier (Juggernaut)
+static func _set_enemy_health(enemy_health_value: int):
+	enemy_health = enemy_health_value
+	
+##Test static function for gameplay modifier (Taxed)
+static func _set_enemy_speed(enemy_speed_value: int):
+	enemy_speed = enemy_speed_value
