@@ -11,7 +11,9 @@ config_version=5
 [application]
 
 config/name="Space Romans"
+
 run/main_scene="res://assets/scenes/menus/main_menu/main_menu.tscn"
+
 config/features=PackedStringArray("4.2", "GL Compatibility")
 boot_splash/bg_color=Color(0, 0.156863, 0.215686, 1)
 boot_splash/image="res://splashscreen.png"
@@ -27,6 +29,11 @@ NamingManager="*res://assets/scenes/singletons/naming_manager/naming_manager.tsc
 
 window/size/viewport_width=720
 window/size/viewport_height=480
+
+[display]
+
+window/size/viewport_width=1190
+window/size/viewport_height=738
 
 [input]
 
