@@ -9,6 +9,7 @@ class_name Enemy
 signal enemy_killed ##Emitted when the Enemy is killed
 
 @export var enemy_speed : int = 200
+@export var enemy_patrol_speed : int = 100
 @export var enemy_damage : int = 50
 @export var enemy_health : int = 100
 
