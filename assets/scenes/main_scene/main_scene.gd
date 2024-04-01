@@ -11,10 +11,21 @@ const ENEMY_SCENE := preload("res://assets/scenes/game/enemy/enemy.tscn")
 
 @onready var complete_label: Label = $Player/CompleteLabel
 
+@onready var player: Player = $Player
+
 func _ready() -> void:
 	randomize_enemy_layout()
 	initialize_objective()
+	initialize_modifier()
 
+func initialize_modifier():
+	var modifier : Modifier = GameManager.mission.mission_modifier
+	ModifierManager._activate_gameplay_modifier(modifier)
+	player.apply_values()
+	
+	for e : Enemy in enemies.get_children():
+		e.apply_values()
+	
 func initialize_objective():
 	var objective_positions : Array[Node] = possible_objective_positions.get_children()
 	

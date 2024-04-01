@@ -2,15 +2,15 @@ extends Node
 
 const BASE_ENEMY_SPEED : int = 200
 const BASE_ENEMY_PATROL_SPEED : int = 100
-const BASE_ENEMY_DAMAGE : int = 50 ##Test TODO
-const BASE_ENEMY_HEALTH : int = 100 ##Test TODO
+const BASE_ENEMY_DAMAGE : int = 50
+const BASE_ENEMY_HEALTH : int = 100
 
-const BASE_PLAYER_DAMAGE : int = 10 ##Test TODO
-const BASE_PLAYER_WALK_NOISE : int = 32 ## Test TODO
-const BASE_PLAYER_SPRINT_NOISE : int = 64 ## Test TODO
-const BASE_PLAYER_SNEAK_SPEED : int = 75 ## Test TODO
-const BASE_PLAYER_SHOOT_RANGE : int = 128 ## Test TODO
-const BASE_PLAYER_HEALTH : int = 100 ## Test TODO
+const BASE_PLAYER_DAMAGE : int = 10
+const BASE_PLAYER_WALK_NOISE : int = 32
+const BASE_PLAYER_SPRINT_NOISE : int = 64
+const BASE_PLAYER_SNEAK_SPEED : int = 75
+const BASE_PLAYER_SHOOT_RANGE : int = 128
+const BASE_PLAYER_HEALTH : int = 100
 
 var player_skin_color : Color = CharacterGraphic.HUMAN_SKIN_COLORS.pick_random() #The Color of the Player's skin in Customization
 var player_clothing_color : Color = Color.WEB_GRAY #The Color of the Player's clothes
@@ -59,7 +59,7 @@ func is_player_audible() -> bool:
 ##Test function for gameplay modifier (Rage) ##TODO 
 func _set_enemy_damage(enemy_damage_value: int):
 	effective_enemy_damage = enemy_damage_value
-	
+
 ##Test function for gameplay modifier (Juggernaut) ##TODO 
 func _set_enemy_health(enemy_health_value: int):
 	effective_enemy_health = enemy_health_value

@@ -7,9 +7,12 @@ const MAIN_GAME_PATH := "res://assets/scenes/main_scene/main_scene.tscn"
 
 @onready var score_label: Label = $PanelContainer/MarginContainer/VBoxContainer/ScoreLabel
 
+@onready var modifier_label: Label = $PanelContainer/MarginContainer/VBoxContainer/ModifierLabel
+
 var existing_ship_names : Array[String] = []
 
 func _ready() -> void:
+	ModifierManager._reset_modifiers()
 	generate_missions()
 	populate_missions()
 
@@ -27,7 +30,9 @@ func generate_missions() -> void:
 			
 			var objective = Objective.POTENTIAL_OBJECTIVES.pick_random()
 			
-			var new_mission := Mission.new(ship_name,planet_name,objective)
+			var modifier : Modifier = ModifierManager.gameplay_modifiers.pick_random()
+			
+			var new_mission := Mission.new(ship_name,planet_name,objective,modifier)
 			
 			GameManager.missions.append(new_mission)
 
@@ -61,3 +66,8 @@ func _on_mission_list_item_activated(index: int) -> void:
 
 func _process(delta: float) -> void:
 	score_label.text = "Your Score: %d" % GameManager.score
+
+func _on_mission_list_item_selected(index: int) -> void:
+	var mod : Modifier = GameManager.missions[index].mission_modifier
+	modifier_label.text = "Modifier: %s - %s" % [mod.modifier_name,mod.modifier_description]
+	modifier_label.visible = true
