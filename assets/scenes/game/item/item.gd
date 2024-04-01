@@ -2,9 +2,9 @@ extends CharacterBody2D
 
 class_name Item
 
-##Base Enemy Class
+##Base Item Class
 ##
-##Enemies have a Cone of Vision, and if they see the player in it, they'll attack
+
 @onready var state_machine: ItemStateMachine = $ItemStateMachine
 @export var item_health : int = 100
 
@@ -17,11 +17,11 @@ signal activate_button
 func _process(delta: float) -> void:
 	if item_health <= 0:
 		if is_obj:
-			destroy_objective
+			destroy_objective.emit()
 		queue_free()
 	if item_health < 100000000000:
 		if is_button:
-			activate_button
+			activate_button.emit()
 			item_health = 100000000000
 
 func _create_obj() ->void:
