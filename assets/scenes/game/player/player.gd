@@ -12,28 +12,22 @@ const GAME_OVER_PATH := "res://assets/scenes/menus/game_over_menu/game_over_menu
 ##
 ##The User controls the player, moving around using WASD, Sprinting using Shift, Sneaking using CTRL
 
-signal game_over ##Emitted when the Player's health reaches 0 (or when they fail the objective, but that's TODO)
+signal game_over ##Emitted when the Player's health reaches 0
 
 #@export means that the Variable can be edited in the inspector
 
 @export var base_speed : int = 200 ##The Base Speed of the Player, when they're not Sprinting or sneaking
 @export var sprint_speed : int = 400 ##The Speed of the Player when they're sprinting using SHIFT
 
-##@export var sneak_speed : int = 75 ##The Speed of the Player when they're sneaking using CTRL (Original version)
 @export var sneak_speed : int = GameManager.effective_player_sneak_speed ##The Speed of the Player when they're sneaking using CTRL (Test modified version) TODO
 
-##@export var shoot_range : int = 128 ##The Maximum Range the Player can shoot (Original version)
 @export var shoot_range : int = GameManager.effective_player_shoot_range ##The Maximum Range the Player can shoot (Test modified version) TODO
 
-
-##@export var shoot_damage : int = 10 ##The Damage the Player does when Shooting (Original version)
 @export var shoot_damage : int = GameManager.effective_player_damage ##The Damage the Player does when Shooting (Test modified version) TODO
 
-##@export var walk_noise : int = 32 ##The Base Noise when the Player is walking (Original version) 
 @export var walk_noise : int = GameManager.effective_player_walk_noise ##The Base Noise when the Player is walking (Test modified version) TODO
-
-##@export var sprint_noise : int = 64 ##The Noise when the Player is sprinting (Original version) 
 @export var sprint_noise : int = GameManager.effective_player_sprint_noise ##The Noise when the Player is sprinting (Test modified version) TODO
+
 @export var shoot_noise : int = 128 ##The Noise when the Player is shooting
 
 @onready var player_character_graphic: CharacterGraphic = $PlayerCharacterGraphic
@@ -58,6 +52,14 @@ func _ready() -> void:
 	player_character_graphic.set_skin_color(GameManager.player_skin_color)
 	player_character_graphic.set_clothing_color(GameManager.player_clothing_color)
 	player_character_graphic.set_hat(GameManager.player_hat)
+
+func apply_values() -> void:
+	sneak_speed = GameManager.effective_player_sneak_speed
+	shoot_range = GameManager.effective_player_shoot_range
+	shoot_damage = GameManager.effective_player_damage
+	
+	walk_noise = GameManager.effective_player_walk_noise
+	sprint_noise = GameManager.effective_player_sprint_noise
 
 func _process(delta: float) -> void:
 	if player_health <= 0:
@@ -95,6 +97,9 @@ func _handle_neck_snap() -> void:
 
 ##A Function to Handle the Player Shooting using Left Click
 func _handle_shooting() -> void:
+	if shoot_damage == 0:
+		return
+	
 	shoot_cast.target_position = get_global_mouse_position() - shoot_cast.global_position
 	shoot_cast.target_position = shoot_cast.target_position.limit_length(shoot_range)
 	

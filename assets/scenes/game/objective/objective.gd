@@ -16,13 +16,13 @@ func set_objective(objective : String,position : Vector2) -> void:
 		var obj_item = ITEM.instantiate()
 		obj_item.global_position = position
 		add_child(obj_item)
-		obj_item.is_obj = true
+		obj_item._create_obj()
 		obj_item.destroy_objective.connect(comp_objective)
 	elif objective == "upload":
 		var obj_item = ITEM.instantiate()
 		add_child(obj_item)
 		obj_item.global_position = position
-		obj_item.is_button = true
+		obj_item._create_button()
 		obj_item.activate_button.connect(comp_objective)
 	elif objective == "kill":
 		enemy_to_kill.enemy_killed.connect(comp_objective)

@@ -43,15 +43,21 @@ text = "Your Score: 0"
 
 [node name="MissionSelectPrompt" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "Select a Mission (double click):"
+text = "Select a Mission (double click to select, left click to see Modifier):"
 
 [node name="MissionList" type="ItemList" parent="PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+
+[node name="ModifierLabel" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+autowrap_mode = 3
 
 [node name="BackToMenuButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Back to Main Menu"
 
 [connection signal="item_activated" from="PanelContainer/MarginContainer/VBoxContainer/MissionList" to="." method="_on_mission_list_item_activated"]
+[connection signal="item_selected" from="PanelContainer/MarginContainer/VBoxContainer/MissionList" to="." method="_on_mission_list_item_selected"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/BackToMenuButton" to="." method="_on_back_to_menu_button_pressed"]
