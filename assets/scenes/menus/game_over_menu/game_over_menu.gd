@@ -15,6 +15,7 @@ const TRASH_TALKS := [
 @onready var trash_talk_label: Label = $PanelContainer/MarginContainer/VBoxContainer/TrashTalkLabel
 
 func _ready() -> void:
+	GameManager.score = 0
 	trash_talk_label.text = TRASH_TALKS.pick_random()
 
 func _on_back_to_menu_button_pressed() -> void:

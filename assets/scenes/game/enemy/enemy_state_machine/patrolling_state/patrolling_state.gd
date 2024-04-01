@@ -25,7 +25,7 @@ func _move_to_patrol_point(delta : float) -> void:
 		completed_patrol_points.append(next_point)
 		return
 	
-	my_body.velocity = my_body.global_position.direction_to(next_point.global_position) * my_body.enemy_speed
+	my_body.velocity = my_body.global_position.direction_to(next_point.global_position) * my_body.enemy_patrol_speed
 	my_body.move_and_slide()
 
 func _look_around(delta : float) -> void:
