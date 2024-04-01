@@ -20,9 +20,11 @@ signal game_over ##Emitted when the Player's health reaches 0 (or when they fail
 @export var sprint_speed : int = 400 ##The Speed of the Player when they're sprinting using SHIFT
 
 ##@export var sneak_speed : int = 75 ##The Speed of the Player when they're sneaking using CTRL (Original version)
-@export var sneak_speed : int = GameManager.effective_player_sneak_speed ##The Speed of the Player when they're sneaking using CTRL (Test modified version) TODO)
+@export var sneak_speed : int = GameManager.effective_player_sneak_speed ##The Speed of the Player when they're sneaking using CTRL (Test modified version) TODO
 
-@export var shoot_range : int = 128 ##The Maximum Range the Player can shoot
+##@export var shoot_range : int = 128 ##The Maximum Range the Player can shoot (Original version)
+@export var shoot_range : int = GameManager.effective_player_shoot_range ##The Maximum Range the Player can shoot (Test modified version) TODO
+
 
 ##@export var shoot_damage : int = 10 ##The Damage the Player does when Shooting (Original version)
 @export var shoot_damage : int = GameManager.effective_player_damage ##The Damage the Player does when Shooting (Test modified version) TODO
@@ -46,7 +48,8 @@ signal game_over ##Emitted when the Player's health reaches 0 (or when they fail
 
 var shooting : bool = false ##Whether or not the player is shooting - useful for a (ugly) solution to noise radius being overwritten when shooting
 
-var player_health : int = 100 ##The Health of the Player
+##var player_health : int = 100 ##The Health of the Player (Original version)
+var player_health : int = GameManager.effective_player_health ##The Health of the Player (Test modified version)
 
 var can_move : bool = true ##Whether or not the player can move (for tutorial)
 
