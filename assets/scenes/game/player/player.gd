@@ -90,9 +90,6 @@ func _handle_shooting() -> void:
 	
 	shooting = true
 	
-	laserbeam.points[0] = Vector2.ZERO
-	laserbeam.points[1] = shoot_cast.target_position
-	laserbeam.visible = true
 	
 	tween.tween_property(player_noise,"noise_radius",shoot_noise,0.1)
 	tween.tween_property(player_noise,"noise_radius",starting_noise_radius,0.1)
@@ -100,12 +97,22 @@ func _handle_shooting() -> void:
 	tween_2.tween_property(GameManager,"player_noise",10,0.1)
 	tween_2.tween_property(GameManager,"player_noise",starting_player_noise,0.1)
 	
+	shoot_cast.force_raycast_update()
+	
+	laserbeam.points[0] = Vector2.ZERO
+	
+	var victim := shoot_cast.get_collider()
+	
+	if victim != null:
+		laserbeam.points[1] = shoot_cast.get_collision_point() - global_position
+	else:
+		laserbeam.points[1] = shoot_cast.target_position
+	
+	laserbeam.visible = true
+	
 	tween_3.tween_property(laserbeam,"modulate:a",1,0.1)
 	tween_3.tween_property(laserbeam,"modulate:a",0,0.1)
 	
-	shoot_cast.force_raycast_update()
-	
-	var victim := shoot_cast.get_collider()
 	if victim != null and victim is Enemy:
 		victim.enemy_health -= shoot_damage
 		victim.state_machine.combat_state.target = self
