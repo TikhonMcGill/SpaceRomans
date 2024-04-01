@@ -39,7 +39,7 @@ var shooting : bool = false ##Whether or not the player is shooting - useful for
 
 var player_health : int = 100 ##The Health of the Player
 
-var can_move : bool = false ##Whether or not the player can move (for tutorial)
+var can_move : bool = true ##Whether or not the player can move (for tutorial)
 
 func _ready() -> void:
 	player_character_graphic.my_character = self

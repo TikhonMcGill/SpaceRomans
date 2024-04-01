@@ -11,10 +11,6 @@ func _process(delta):
 	else:
 		self.visible = false
 
-func show_message():
-	showing_message = true
-	text = "Press Right Button to Move Right!"
-
 func hide_message():
 	showing_message = false
 	text = ""
