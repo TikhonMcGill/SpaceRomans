@@ -43,6 +43,7 @@ func _die() -> void:
 	new_tween.tween_property(self,"rotation_degrees",randi_range(45,270),0.4)
 	new_tween.tween_property(self,"modulate:a",0,1.5)
 	new_tween.tween_callback(queue_free)
+	enemy_killed.emit()
 
 func _process(delta: float) -> void:
 	if enemy_health <= 0:

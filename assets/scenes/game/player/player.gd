@@ -16,7 +16,7 @@ signal game_over ##Emitted when the Player's health reaches 0 (or when they fail
 
 @export var base_speed : int = 200 ##The Base Speed of the Player, when they're not Sprinting or sneaking
 @export var sprint_speed : int = 400 ##The Speed of the Player when they're sprinting using SHIFT
-@export var sneak_speed : int = 50 ##The Speed of the Player when they're sneaking using CTRL
+@export var sneak_speed : int = 75 ##The Speed of the Player when they're sneaking using CTRL
 
 @export var shoot_range : int = 128 ##The Maximum Range the Player can shoot
 @export var shoot_damage : int = 10 ##The Damage the Player does when Shooting

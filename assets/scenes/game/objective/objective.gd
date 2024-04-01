@@ -6,19 +6,21 @@ class_name Objective
 
 signal objective_complete ##Emitted when the Objective is Complete
 
-@export var enemy_to_kill : Enemy
-
+const POTENTIAL_OBJECTIVES = ["break","upload","kill"]
 const ITEM = preload("res://assets/scenes/game/item/item.tscn")
-var potent_obj = ["break","upload","kill"]
-var objective = potent_obj.pick_random()
+
+@export var enemy_to_kill : Enemy
+@export var objective : String = POTENTIAL_OBJECTIVES.pick_random()
 
 func set_objective(objective) -> void:
 	if objective == "break":
 		var obj_item = ITEM.instantiate()
+		add_child(obj_item)
 		obj_item.is_obj = true
 		obj_item.destroy_objective.connect(comp_objective)
 	elif objective == "upload":
 		var obj_item = ITEM.instantiate()
+		add_child(obj_item)
 		obj_item.is_button = true
 		obj_item.activate_button.connect(comp_objective)
 	elif objective == "kill":
