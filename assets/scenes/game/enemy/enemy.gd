@@ -13,6 +13,15 @@ signal enemy_killed ##Emitted when the Enemy is killed
 @export var enemy_damage : int = 50
 @export var enemy_health : int = 100
 
+##Test variable for Rage gameplay modifier ##TODO UNCOMMENT AFTER MERGE WITH MAIN
+##static var enemy_damage : int = 50
+
+##Test variable for Juggernaut gameplay modifier ##TODO UNCOMMENT AFTER MERGE WITH MAIN
+##static var enemy_health : int = 100
+
+##Test variable for Taxed gameplay modifier ##TODO UNCOMMENT AFTER MERGE WITH MAIN
+##static var enemy_speed : int = 200
+
 @export var patrol_points : Array[PatrolPoint] = []
 @export var back_and_forth_patrol : bool = false
 
@@ -78,3 +87,15 @@ func _physics_process(delta: float) -> void:
 
 func look_at_point(pos : Vector2) -> void:
 	enemy_vision.rotation = lerp_angle(enemy_vision.rotation,enemy_vision.global_position.angle_to_point(pos),0.1)
+
+##Test static function for gameplay modifier (Rage) ##TODO UNCOMMENT AFTER MERGE WITH MAIN
+##static func _set_enemy_damage(enemy_damage_value: int):
+	##enemy_damage = enemy_damage_value
+
+##Test static function for gameplay modifier (Juggernaut) ##TODO UNCOMMENT AFTER MERGE WITH MAIN
+##static func _set_enemy_health(enemy_health_value: int):
+	##enemy_health = enemy_health_value
+	
+##Test static function for gameplay modifier (Taxed) ##TODO UNCOMMENT AFTER MERGE WITH MAIN
+##static func _set_enemy_speed(enemy_speed_value: int):
+	##enemy_speed = enemy_speed_value
