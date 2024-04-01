@@ -6,7 +6,18 @@ class_name Enemy
 ##
 ##Enemies have a Cone of Vision, and if they see the player in it, they'll attack
 
+@export var enemy_speed : int = 200 
+@export var enemy_damage : int = 50 
+@export var enemy_health : int = 100 
 
+##Test variable for Rage gameplay modifier ##TODO UNCOMMENT AFTER MERGE WITH MAIN
+##static var enemy_damage : int = 50
+
+##Test variable for Juggernaut gameplay modifier ##TODO UNCOMMENT AFTER MERGE WITH MAIN
+##static var enemy_health : int = 100
+
+##Test variable for Taxed gameplay modifier ##TODO UNCOMMENT AFTER MERGE WITH MAIN
+##static var enemy_speed : int = 200
 
 @export var patrol_points : Array[PatrolPoint] = []
 @export var back_and_forth_patrol : bool = false
