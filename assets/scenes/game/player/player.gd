@@ -18,13 +18,20 @@ signal game_over ##Emitted when the Player's health reaches 0 (or when they fail
 
 @export var base_speed : int = 200 ##The Base Speed of the Player, when they're not Sprinting or sneaking
 @export var sprint_speed : int = 400 ##The Speed of the Player when they're sprinting using SHIFT
-@export var sneak_speed : int = 75 ##The Speed of the Player when they're sneaking using CTRL
+
+##@export var sneak_speed : int = 75 ##The Speed of the Player when they're sneaking using CTRL (Original version)
+@export var sneak_speed : int = GameManager.effective_player_sneak_speed ##The Speed of the Player when they're sneaking using CTRL (Test modified version) TODO)
 
 @export var shoot_range : int = 128 ##The Maximum Range the Player can shoot
-@export var shoot_damage : int = 10 ##The Damage the Player does when Shooting
 
-@export var walk_noise : int = 32 ##The Base Noise when the Player is walking
-@export var sprint_noise : int = 64 ##The Noise when the Player is sprinting
+##@export var shoot_damage : int = 10 ##The Damage the Player does when Shooting (Original version)
+@export var shoot_damage : int = GameManager.effective_player_damage ##The Damage the Player does when Shooting (Test modified version) TODO
+
+##@export var walk_noise : int = 32 ##The Base Noise when the Player is walking (Original version) 
+@export var walk_noise : int = GameManager.effective_player_walk_noise ##The Base Noise when the Player is walking (Test modified version) TODO
+
+##@export var sprint_noise : int = 64 ##The Noise when the Player is sprinting (Original version) 
+@export var sprint_noise : int = GameManager.effective_player_sprint_noise ##The Noise when the Player is sprinting (Test modified version) TODO
 @export var shoot_noise : int = 128 ##The Noise when the Player is shooting
 
 @onready var player_character_graphic: CharacterGraphic = $PlayerCharacterGraphic

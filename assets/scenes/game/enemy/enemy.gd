@@ -10,8 +10,10 @@ signal enemy_killed ##Emitted when the Enemy is killed
 
 @export var enemy_speed : int = GameManager.effective_enemy_speed
 @export var enemy_patrol_speed : int = GameManager.effective_enemy_patrol_speed
-@export var enemy_damage : int = 50
-@export var enemy_health : int = 100
+@export var enemy_damage : int = GameManager.effective_enemy_damage ##Test TODO 
+@export var enemy_health : int = GameManager.effective_enemy_health ##Test TODO
+
+
 
 @export var patrol_points : Array[PatrolPoint] = []
 @export var back_and_forth_patrol : bool = false
