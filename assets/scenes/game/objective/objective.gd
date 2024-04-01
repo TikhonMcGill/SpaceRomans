@@ -10,25 +10,24 @@ const POTENTIAL_OBJECTIVES = ["break","upload","kill"]
 const ITEM = preload("res://assets/scenes/game/item/item.tscn")
 
 @export var enemy_to_kill : Enemy
-@export var objective : String = POTENTIAL_OBJECTIVES.pick_random()
 
-func set_objective(objective) -> void:
+func set_objective(objective : String,position : Vector2) -> void:
 	if objective == "break":
 		var obj_item = ITEM.instantiate()
+		obj_item.global_position = position
 		add_child(obj_item)
 		obj_item.is_obj = true
 		obj_item.destroy_objective.connect(comp_objective)
 	elif objective == "upload":
 		var obj_item = ITEM.instantiate()
 		add_child(obj_item)
+		obj_item.global_position = position
 		obj_item.is_button = true
 		obj_item.activate_button.connect(comp_objective)
 	elif objective == "kill":
 		enemy_to_kill.enemy_killed.connect(comp_objective)
 
 func comp_objective() -> void:
+	GameManager.score += 100
+	GameManager.save_score()
 	objective_complete.emit()
-
-func _ready() -> void:
-	set_objective(objective)
-

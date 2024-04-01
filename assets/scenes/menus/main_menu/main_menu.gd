@@ -6,6 +6,8 @@ const MISSION_SELECT_PATH := "res://assets/scenes/menus/mission_select_menu/miss
 @onready var main_menu_container: VBoxContainer = $PanelContainer/MarginContainer/MainMenuContainer
 @onready var character_customization_container: ScrollContainer = $PanelContainer/MarginContainer/CharacterCustomizationContainer
 
+@onready var score_label: Label = $PanelContainer/MarginContainer/MainMenuContainer/ScoreLabel
+
 func _ready() -> void:
 	main_menu_container.visible = true
 	character_customization_container.visible = false
@@ -26,3 +28,6 @@ func _on_prologue_button_pressed() -> void:
 
 func _on_mission_select_button_pressed() -> void:
 	get_tree().change_scene_to_file(MISSION_SELECT_PATH)
+
+func _process(delta: float) -> void:
+	score_label.text = "Your Score: %d" % GameManager.score

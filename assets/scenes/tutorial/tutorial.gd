@@ -2,6 +2,8 @@ extends Node2D
 
 const MAIN_MENU_PATH := "res://assets/scenes/menus/main_menu/main_menu.tscn"
 
+@onready var tutorial_objective: Objective = $TutorialObjective
+
 @onready var message_label = $Player/MessageLabel
 @onready var player: Player = $Player
 
@@ -13,6 +15,8 @@ var prologue_over : bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	tutorial_objective.set_objective("kill",Vector2.ZERO)
+	
 	player.can_move = false
 	
 	message_label.update_message("The Romans will pay for what they've done...")

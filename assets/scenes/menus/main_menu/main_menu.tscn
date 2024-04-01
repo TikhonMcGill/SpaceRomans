@@ -29,6 +29,7 @@ theme_override_constants/margin_right = 50
 theme_override_constants/margin_bottom = 50
 
 [node name="MainMenuContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
+visible = false
 layout_mode = 2
 theme_override_constants/separation = 20
 
@@ -45,6 +46,12 @@ layout_mode = 2
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 24
 text = "Legion, 2024"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScoreLabel" type="Label" parent="PanelContainer/MarginContainer/MainMenuContainer"]
+layout_mode = 2
+text = "Your Score: 0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -72,7 +79,6 @@ size_flags_vertical = 3
 text = "Quit Game"
 
 [node name="CharacterCustomizationContainer" type="ScrollContainer" parent="PanelContainer/MarginContainer"]
-visible = false
 layout_mode = 2
 horizontal_scroll_mode = 0
 script = ExtResource("2_goyhi")
@@ -107,7 +113,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="CharacterGraphic" parent="PanelContainer/MarginContainer/CharacterCustomizationContainer/VBoxContainer/HBoxContainer/Control" instance=ExtResource("2_mc8px")]
-position = Vector2(368, 73)
+position = Vector2(144, 34)
 scale = Vector2(2, 2)
 
 [node name="SkinColorPrompt" type="Label" parent="PanelContainer/MarginContainer/CharacterCustomizationContainer/VBoxContainer"]

@@ -45,6 +45,5 @@ position = Vector2(336, 400)
 
 [node name="TutorialObjective" parent="." node_paths=PackedStringArray("enemy_to_kill") instance=ExtResource("7_6fjtu")]
 enemy_to_kill = NodePath("../Enemy")
-objective = "kill"
 
 [connection signal="objective_complete" from="TutorialObjective" to="." method="_on_tutorial_objective_objective_complete"]

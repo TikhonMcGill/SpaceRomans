@@ -51,6 +51,8 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	if player_health <= 0:
+		GameManager.score -= 100
+		GameManager.save_score()
 		get_tree().change_scene_to_file(GAME_OVER_PATH)
 	
 	_handle_combat()
@@ -77,6 +79,8 @@ func _handle_neck_snap() -> void:
 		var enemy : Enemy = possible_enemies[0]
 		
 		if enemy.state_machine.current_state != enemy.state_machine.combat_state:
+			GameManager.score += 10
+			GameManager.save_score()
 			enemy.enemy_health = 0
 
 ##A Function to Handle the Player Shooting using Left Click
@@ -116,10 +120,16 @@ func _handle_shooting() -> void:
 	tween_3.tween_property(laserbeam,"modulate:a",1,0.1)
 	tween_3.tween_property(laserbeam,"modulate:a",0,0.1)
 	
-	if victim != null and victim is Enemy:
-		victim.enemy_health -= shoot_damage
-		victim.state_machine.combat_state.target = self
-		victim.state_machine.to_combat_state()
+	if victim != null:
+		if victim is Enemy:
+			victim.enemy_health -= shoot_damage
+			if victim.enemy_health <= 0:
+				GameManager.score += 5
+				GameManager.save_score()
+			victim.state_machine.combat_state.target = self
+			victim.state_machine.to_combat_state()
+		elif victim is Item:
+			victim.item_health -= shoot_damage
 	
 	await tween.finished
 	
