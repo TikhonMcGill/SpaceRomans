@@ -2,16 +2,16 @@ extends Node
 
 class_name Objective
 
-
 ##Base Class for Randomly-Selected Game Objectives
 
 signal objective_complete ##Emitted when the Objective is Complete
 
+@export var enemy_to_kill : Enemy
+
 const ITEM = preload("res://assets/scenes/game/item/item.tscn")
-var potent_obj = ["break","upload"]
+var potent_obj = ["break","upload","kill"]
 var objective = potent_obj.pick_random()
 
-		
 func set_objective(objective) -> void:
 	if objective == "break":
 		var obj_item = ITEM.instantiate()
@@ -21,11 +21,12 @@ func set_objective(objective) -> void:
 		var obj_item = ITEM.instantiate()
 		obj_item.is_button = true
 		obj_item.activate_button.connect(comp_objective)
-		
+	elif objective == "kill":
+		enemy_to_kill.enemy_killed.connect(comp_objective)
+
 func comp_objective() -> void:
 	objective_complete.emit()
-	
-		
+
 func _ready() -> void:
 	set_objective(objective)
 
