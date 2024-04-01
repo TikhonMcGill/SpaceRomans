@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://dmlx6gfc0ilwa"]
+
+[ext_resource type="Script" path="res://assets/scenes/tutorial/tutorial.gd" id="1_b6m16"]
+[ext_resource type="PackedScene" uid="uid://c01hct8lwvtd4" path="res://assets/scenes/game/player/player.tscn" id="2_c424q"]
+[ext_resource type="PackedScene" uid="uid://cyyvt2c5voxqn" path="res://assets/scenes/game/enemy/enemy.tscn" id="3_nsaso"]
+[ext_resource type="Script" path="res://assets/scenes/tutorial/MessageLabel.gd" id="4_buuwb"]
+
+[node name="Tutorial" type="Node2D"]
+script = ExtResource("1_b6m16")
+
+[node name="Player" parent="." instance=ExtResource("2_c424q")]
+position = Vector2(88, 89)
+
+[node name="MessageLabel" type="Label" parent="Player"]
+offset_left = -33.0
+offset_top = -54.0
+offset_right = 7.0
+offset_bottom = -31.0
+script = ExtResource("4_buuwb")
+
+[node name="Enemy" parent="." instance=ExtResource("3_nsaso")]
+position = Vector2(389, 172)
