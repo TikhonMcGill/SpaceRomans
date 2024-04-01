@@ -1,6 +1,7 @@
 extends Control
 
 const TUTORIAL_PATH := "res://assets/scenes/tutorial/tutorial.tscn"
+const MISSION_SELECT_PATH := "res://assets/scenes/menus/mission_select_menu/mission_select_menu.tscn"
 
 @onready var main_menu_container: VBoxContainer = $PanelContainer/MarginContainer/MainMenuContainer
 @onready var character_customization_container: ScrollContainer = $PanelContainer/MarginContainer/CharacterCustomizationContainer
@@ -22,3 +23,6 @@ func _on_customization_back_button_pressed() -> void:
 
 func _on_prologue_button_pressed() -> void:
 	get_tree().change_scene_to_file(TUTORIAL_PATH)
+
+func _on_mission_select_button_pressed() -> void:
+	get_tree().change_scene_to_file(MISSION_SELECT_PATH)

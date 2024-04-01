@@ -29,7 +29,6 @@ theme_override_constants/margin_right = 50
 theme_override_constants/margin_bottom = 50
 
 [node name="MainMenuContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
-visible = false
 layout_mode = 2
 theme_override_constants/separation = 20
 
@@ -73,6 +72,7 @@ size_flags_vertical = 3
 text = "Quit Game"
 
 [node name="CharacterCustomizationContainer" type="ScrollContainer" parent="PanelContainer/MarginContainer"]
+visible = false
 layout_mode = 2
 horizontal_scroll_mode = 0
 script = ExtResource("2_goyhi")
@@ -141,6 +141,7 @@ layout_mode = 2
 text = "Back to Main Menu"
 
 [connection signal="pressed" from="PanelContainer/MarginContainer/MainMenuContainer/PrologueButton" to="." method="_on_prologue_button_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/MainMenuContainer/MissionSelectButton" to="." method="_on_mission_select_button_pressed"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/MainMenuContainer/CustomizeCharacterButton" to="." method="_on_customize_character_button_pressed"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/MainMenuContainer/QuitGameButton" to="." method="_on_quit_game_button_pressed"]
 [connection signal="hidden" from="PanelContainer/MarginContainer/CharacterCustomizationContainer" to="PanelContainer/MarginContainer/CharacterCustomizationContainer" method="_on_hidden"]
