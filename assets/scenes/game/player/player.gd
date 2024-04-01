@@ -2,6 +2,8 @@ extends CharacterBody2D #The Player Class inherits all methods and variables fro
 
 class_name Player #Using "class_name" means other scripts will be able to see this class and provide hints
 
+const GAME_OVER_PATH := "res://assets/scenes/menus/game_over_menu/game_over_menu.tscn"
+
 #CTRL + Click on most Green Class Names, and Godot will automatically open the Documentation on that Class for you
 #You can see the Double hashes ("##") have different colors - those are Autodocumentation FOR OUR OWN CLASSES, which means
 #if you CTRL + Click on "Player" in a different script, you'll be shown documentation on it!
@@ -49,8 +51,7 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	if player_health <= 0:
-		print("GAME OVER!!!")
-		game_over.emit()
+		get_tree().change_scene_to_file(GAME_OVER_PATH)
 	
 	_handle_combat()
 	queue_redraw()
