@@ -6,6 +6,7 @@
 script = ExtResource("1_nhj3o")
 
 [node name="ShootTimer" type="Timer" parent="."]
+wait_time = 0.8
 
 [node name="ShootCast" type="RayCast2D" parent="."]
 modulate = Color(1, 0, 1, 1)

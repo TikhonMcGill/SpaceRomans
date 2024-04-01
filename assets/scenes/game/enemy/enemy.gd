@@ -6,7 +6,10 @@ class_name Enemy
 ##
 ##Enemies have a Cone of Vision, and if they see the player in it, they'll attack
 
+signal enemy_killed ##Emitted when the Enemy is killed
+
 @export var enemy_speed : int = 200
+@export var enemy_patrol_speed : int = 100
 @export var enemy_damage : int = 50
 @export var enemy_health : int = 100
 
@@ -41,6 +44,7 @@ func _die() -> void:
 	new_tween.tween_property(self,"rotation_degrees",randi_range(45,270),0.4)
 	new_tween.tween_property(self,"modulate:a",0,1.5)
 	new_tween.tween_callback(queue_free)
+	enemy_killed.emit()
 
 func _process(delta: float) -> void:
 	if enemy_health <= 0:

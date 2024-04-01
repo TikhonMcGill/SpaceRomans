@@ -49,6 +49,12 @@ text = "Legion, 2024"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="ScoreLabel" type="Label" parent="PanelContainer/MarginContainer/MainMenuContainer"]
+layout_mode = 2
+text = "Your Score: 0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="HSeparator" type="HSeparator" parent="PanelContainer/MarginContainer/MainMenuContainer"]
 layout_mode = 2
 
@@ -107,7 +113,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="CharacterGraphic" parent="PanelContainer/MarginContainer/CharacterCustomizationContainer/VBoxContainer/HBoxContainer/Control" instance=ExtResource("2_mc8px")]
-position = Vector2(368, 73)
+position = Vector2(144, 34)
 scale = Vector2(2, 2)
 
 [node name="SkinColorPrompt" type="Label" parent="PanelContainer/MarginContainer/CharacterCustomizationContainer/VBoxContainer"]
@@ -140,6 +146,8 @@ text = "Random Clothing Color"
 layout_mode = 2
 text = "Back to Main Menu"
 
+[connection signal="pressed" from="PanelContainer/MarginContainer/MainMenuContainer/PrologueButton" to="." method="_on_prologue_button_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/MainMenuContainer/MissionSelectButton" to="." method="_on_mission_select_button_pressed"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/MainMenuContainer/CustomizeCharacterButton" to="." method="_on_customize_character_button_pressed"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/MainMenuContainer/QuitGameButton" to="." method="_on_quit_game_button_pressed"]
 [connection signal="hidden" from="PanelContainer/MarginContainer/CharacterCustomizationContainer" to="PanelContainer/MarginContainer/CharacterCustomizationContainer" method="_on_hidden"]

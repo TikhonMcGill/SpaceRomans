@@ -2,6 +2,8 @@ extends CharacterBody2D #The Player Class inherits all methods and variables fro
 
 class_name Player #Using "class_name" means other scripts will be able to see this class and provide hints
 
+const GAME_OVER_PATH := "res://assets/scenes/menus/game_over_menu/game_over_menu.tscn"
+
 #CTRL + Click on most Green Class Names, and Godot will automatically open the Documentation on that Class for you
 #You can see the Double hashes ("##") have different colors - those are Autodocumentation FOR OUR OWN CLASSES, which means
 #if you CTRL + Click on "Player" in a different script, you'll be shown documentation on it!
@@ -16,7 +18,7 @@ signal game_over ##Emitted when the Player's health reaches 0 (or when they fail
 
 @export var base_speed : int = 200 ##The Base Speed of the Player, when they're not Sprinting or sneaking
 @export var sprint_speed : int = 400 ##The Speed of the Player when they're sprinting using SHIFT
-@export var sneak_speed : int = 50 ##The Speed of the Player when they're sneaking using CTRL
+@export var sneak_speed : int = 75 ##The Speed of the Player when they're sneaking using CTRL
 
 @export var shoot_range : int = 128 ##The Maximum Range the Player can shoot
 @export var shoot_damage : int = 10 ##The Damage the Player does when Shooting
@@ -39,6 +41,8 @@ var shooting : bool = false ##Whether or not the player is shooting - useful for
 
 var player_health : int = 100 ##The Health of the Player
 
+var can_move : bool = true ##Whether or not the player can move (for tutorial)
+
 func _ready() -> void:
 	player_character_graphic.my_character = self
 	player_character_graphic.set_skin_color(GameManager.player_skin_color)
@@ -47,8 +51,9 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	if player_health <= 0:
-		print("GAME OVER!!!")
-		game_over.emit()
+		GameManager.score -= 100
+		GameManager.save_score()
+		get_tree().change_scene_to_file(GAME_OVER_PATH)
 	
 	_handle_combat()
 	queue_redraw()
@@ -74,6 +79,8 @@ func _handle_neck_snap() -> void:
 		var enemy : Enemy = possible_enemies[0]
 		
 		if enemy.state_machine.current_state != enemy.state_machine.combat_state:
+			GameManager.score += 10
+			GameManager.save_score()
 			enemy.enemy_health = 0
 
 ##A Function to Handle the Player Shooting using Left Click
@@ -113,10 +120,16 @@ func _handle_shooting() -> void:
 	tween_3.tween_property(laserbeam,"modulate:a",1,0.1)
 	tween_3.tween_property(laserbeam,"modulate:a",0,0.1)
 	
-	if victim != null and victim is Enemy:
-		victim.enemy_health -= shoot_damage
-		victim.state_machine.combat_state.target = self
-		victim.state_machine.to_combat_state()
+	if victim != null:
+		if victim is Enemy:
+			victim.enemy_health -= shoot_damage
+			if victim.enemy_health <= 0:
+				GameManager.score += 5
+				GameManager.save_score()
+			victim.state_machine.combat_state.target = self
+			victim.state_machine.to_combat_state()
+		elif victim is Item:
+			victim.item_health -= shoot_damage
 	
 	await tween.finished
 	
@@ -129,6 +142,9 @@ func _handle_shooting() -> void:
 
 ##A Function to Handle Player Movement - movement using WASD/Arrow Keys, Sprinting with SHIFT, Sneaking with CTRL
 func _handle_movement() -> void:
+	if can_move == false:
+		return
+	
 	# ":=" is Syntactic Sugar for Inferring a Type based on the variable set, 
 	#e.g. I could've written "var input_vector : Vector2 = Vector2.ZERO", but it's simpler
 	#to write what I did below

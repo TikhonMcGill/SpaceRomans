@@ -2,10 +2,13 @@ extends CharacterBody2D
 
 class_name Item
 
-##Base Item Class
-##
+const STATUE_TEXTURE := preload("res://assets/scenes/game/item/statue.png")
+const BUTTON_TEXTURE := preload("res://assets/scenes/game/item/Button.png")
 
-@onready var state_machine: ItemStateMachine = $ItemStateMachine
+@onready var icon: Sprite2D = $Icon
+
+@onready var explanation_label: Label = $ExplanationLabel
+
 @export var item_health : int = 100
 
 var is_obj : bool = false
@@ -15,6 +18,13 @@ signal destroy_objective
 signal activate_button
 
 func _process(delta: float) -> void:
+	if is_obj:
+		icon.texture = STATUE_TEXTURE
+		explanation_label.text = "Destroy this Statue to complete the Mission"
+	elif is_button:
+		icon.texture = BUTTON_TEXTURE
+		explanation_label.text = "Shoot this Button to complete the Mission"
+	
 	if item_health <= 0:
 		if is_obj:
 			destroy_objective.emit()
@@ -30,9 +40,3 @@ func _create_obj() ->void:
 func _create_button() ->void:
 	is_button = true
 	item_health = 100000000000
-
-func _ready() -> void:
-	state_machine.set_my_item_body(self)
-	#if objective.objective == destroy && not item.is_obj == true exists, is_obj = true 
-	
-

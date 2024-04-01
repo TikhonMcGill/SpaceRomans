@@ -7,5 +7,27 @@ var player_hat : CharacterHat = null #The Hat the Player is wearing
 var background_noise : int = 0 #Background Noise, 0 by default - if Player Noise > Background Noise, Enemies will hear
 var player_noise : int = 0 #Player Noise, 0 by default - increased by Sprinting & Moving, decreased by standing still and sneaking
 
+var score : int = 0 #Score
+
+var missions : Array[Mission] = []
+
+var mission : Mission = null
+
+func _ready() -> void:
+	_load_score()
+
+func _load_score():
+	if FileAccess.file_exists("user://score.dat") == false:
+		score = 0
+		save_score()
+	else:
+		var f = FileAccess.open_encrypted_with_pass("user://score.dat",FileAccess.READ,"legion")
+		score = f.get_64()
+
+func save_score():
+	var f = FileAccess.open_encrypted_with_pass("user://score.dat",FileAccess.WRITE,"legion")
+	f.store_64(score)
+	f.close()
+
 func is_player_audible() -> bool:
 	return player_noise > background_noise
