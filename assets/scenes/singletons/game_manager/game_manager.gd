@@ -9,6 +9,8 @@ const BASE_PLAYER_DAMAGE : int = 10 ##Test TODO
 const BASE_PLAYER_WALK_NOISE : int = 32 ## Test TODO
 const BASE_PLAYER_SPRINT_NOISE : int = 64 ## Test TODO
 const BASE_PLAYER_SNEAK_SPEED : int = 75 ## Test TODO
+const BASE_PLAYER_SHOOT_RANGE : int = 128 ## Test TODO
+const BASE_PLAYER_HEALTH : int = 100 ## Test TODO
 
 var player_skin_color : Color = CharacterGraphic.HUMAN_SKIN_COLORS.pick_random() #The Color of the Player's skin in Customization
 var player_clothing_color : Color = Color.WEB_GRAY #The Color of the Player's clothes
@@ -31,7 +33,9 @@ var effective_enemy_health : int = BASE_ENEMY_HEALTH ##Test TODO
 var effective_player_damage : int = BASE_PLAYER_DAMAGE ##Test TODO
 var effective_player_walk_noise : int = BASE_PLAYER_WALK_NOISE ##Test TODO
 var effective_player_sprint_noise : int = BASE_PLAYER_SPRINT_NOISE ##Test TODO
-var effective_player_sneak_speed : int = BASE_PLAYER_SNEAK_SPEED
+var effective_player_sneak_speed : int = BASE_PLAYER_SNEAK_SPEED ##Test TODO
+var effective_player_shoot_range : int = BASE_PLAYER_SHOOT_RANGE ##Test TODO
+var effective_player_health : int = BASE_PLAYER_HEALTH
 
 func _ready() -> void:
 	_load_score()
@@ -73,8 +77,15 @@ func _set_player_damage(player_damage_value: int):
 func _set_player_sneak_speed(player_sneak_speed_value: int):
 	effective_player_sneak_speed = player_sneak_speed_value
 	
-##TODO (Commented out for now becuase in testing, enemies can still detect the player for some reason)
+##Test function for gameplay modifier (Sharpshooter) ##TODO
+func _set_player_shoot_range(player_shoot_range_value: int):
+	effective_player_shoot_range = player_shoot_range_value
+
+##Test function for gameplay modifier (Gladiator) ##TODO 
+func _set_player_health(player_health_value: int):
+	effective_player_health = player_health_value
+
 ##Test function for gameplay modifier (Phantom) 
-##func _set_player_walk_and_sprint_noise(player_walk_noise_value: int, player_sprint_noise_value: int):
-	##effective_player_walk_noise = player_walk_noise_value
-	##effective_player_sprint_noise = player_sprint_noise_value
+func _set_player_walk_and_sprint_noise(player_walk_noise_value: int, player_sprint_noise_value: int):
+	effective_player_walk_noise = player_walk_noise_value
+	effective_player_sprint_noise = player_sprint_noise_value

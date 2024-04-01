@@ -7,7 +7,10 @@ var gameplay_modifiers = [
 	Modifier.new("Taxed", "Enemy movement speed is greatly reduced."),
 	Modifier.new("Olive Branch", "Player deals 0 damage per shot."), 
 	Modifier.new("Assassin", "Player movement speed while sneaking is doubled."), 
+	Modifier.new("Sharpshooter", "Player deals 100 damage per shot and has double the shooting range."),
+	Modifier.new("Gladiator", "Player has 200HP."),
 	##TODO Add additional gameplay modifiers
+	Modifier.new("Phantom", "Player makes 2x less noise while walking and sprinting."),
 	]
 
 ##Method to select a random gameplay modifier
@@ -29,6 +32,13 @@ func _activate_gameplay_modifier(gameplay_modifier: Modifier):
 		GameManager._set_player_damage(0)
 	elif gameplay_modifier.modifier_name == "Assassin": ##Test for Assassin gameplay modifier effect
 		GameManager._set_player_sneak_speed(150) 
+	elif gameplay_modifier.modifier_name == "Sharpshooter": ##Test for Sharpshooter gameplay modifier effect
+		GameManager._set_player_damage(100)
+		GameManager._set_player_shoot_range(256) 
+	elif gameplay_modifier.modifier_name == "Gladiator": ##Test for Gladiator gameplay modifier effect
+		GameManager._set_player_health(200) 
+	elif gameplay_modifier.modifier_name == "Phantom": ##Test for Phantom gameplay modifier effect
+		GameManager._set_player_walk_and_sprint_noise(16,32) 
 
 ##Method to apply the gameplay modifier at runtime in-game
 func _ready():
