@@ -21,7 +21,7 @@ func _process(delta):
 		count += 1
 	elif Input.is_action_pressed("move_down") == true and count == 3:
 		message_label.update_message("Press Shift and Move Key Button to Sprint!")
-		count += 1	
+		count += 1
 	elif Input.is_action_pressed("sprint") == true and count == 4:
 		message_label.update_message("Press Ctrl and Move Key Button to Sneak!")
 		count += 1

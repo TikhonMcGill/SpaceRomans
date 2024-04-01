@@ -39,6 +39,8 @@ var shooting : bool = false ##Whether or not the player is shooting - useful for
 
 var player_health : int = 100 ##The Health of the Player
 
+var can_move : bool = false ##Whether or not the player can move (for tutorial)
+
 func _ready() -> void:
 	player_character_graphic.my_character = self
 	player_character_graphic.set_skin_color(GameManager.player_skin_color)
@@ -129,6 +131,9 @@ func _handle_shooting() -> void:
 
 ##A Function to Handle Player Movement - movement using WASD/Arrow Keys, Sprinting with SHIFT, Sneaking with CTRL
 func _handle_movement() -> void:
+	if can_move == false:
+		return
+	
 	# ":=" is Syntactic Sugar for Inferring a Type based on the variable set, 
 	#e.g. I could've written "var input_vector : Vector2 = Vector2.ZERO", but it's simpler
 	#to write what I did below
