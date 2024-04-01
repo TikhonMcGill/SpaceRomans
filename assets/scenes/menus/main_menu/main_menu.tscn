@@ -140,6 +140,7 @@ text = "Random Clothing Color"
 layout_mode = 2
 text = "Back to Main Menu"
 
+[connection signal="pressed" from="PanelContainer/MarginContainer/MainMenuContainer/PrologueButton" to="." method="_on_prologue_button_pressed"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/MainMenuContainer/CustomizeCharacterButton" to="." method="_on_customize_character_button_pressed"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/MainMenuContainer/QuitGameButton" to="." method="_on_quit_game_button_pressed"]
 [connection signal="hidden" from="PanelContainer/MarginContainer/CharacterCustomizationContainer" to="PanelContainer/MarginContainer/CharacterCustomizationContainer" method="_on_hidden"]
