@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://b4dvgx82pnf1b"]
 
 [ext_resource type="Texture2D" uid="uid://jonppjcr3lh8" path="res://icon.svg" id="1_a4cdx"]
-[ext_resource type="Script" path="res://assets/scenes/game/enemy/patrol_point.gd" id="1_qxifl"]
+[ext_resource type="Script" path="res://assets/scenes/game/enemy/enemy_state_machine/patrol_point.gd" id="1_qxifl"]
 
 [node name="PatrolPoint" type="Node2D"]
 script = ExtResource("1_qxifl")

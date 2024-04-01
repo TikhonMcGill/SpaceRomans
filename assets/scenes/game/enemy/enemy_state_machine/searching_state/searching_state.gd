@@ -16,9 +16,12 @@ func _can_search() -> bool:
 func _get_direction_to_search() -> float:
 	return my_body.global_position.angle_to_point(search_position)
 
+func _reached_search() -> bool:
+	return my_body.global_position.distance_to(search_position) <= 8 or my_body.is_on_wall()
+
 func do_state(delta : float) -> void:
 	if _can_search() == true:
-		if my_body.global_position.distance_to(search_position) <= 8 and wait_timer.time_left == 0:
+		if _reached_search() == true and wait_timer.time_left == 0:
 			wait_timer.start()
 			return
 		elif my_body.global_position.distance_to(search_position) > 8:

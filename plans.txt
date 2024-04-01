@@ -5,11 +5,7 @@ Phase 1 Requirements:
 			2. The Level will have an extraction point 
 			3. The Level will have a single enemy 
 			4. The Objective of the Level is to kill the enemy 
-		
-		Functional Requirement 3 – The Game is a Procedurally-Generated Roguelike:
-			1. Levels are Generated from pre-made Rooms (“Tiles”) using rules 
-			2. Users choose the level they play, with randomly-generated names and modifiers 
-		
+	
 		Functional Requirement 4 – There are Randomly-Picked Objectives:
 			1. Extraction – go from one location to another location 
 			2. Rescue Hostage – find a hostage, and bring them with you to the extraction (without them dying) 
